@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -20,16 +18,16 @@ import lombok.Setter;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Auditable<User> {
+public abstract class Auditable<U> {
 	@CreatedBy
-	protected User createdBy;
+	protected U createdBy;
 	
 	@CreatedDate
 	//@Temporal(TemporalType.TIMESTAMP)
 	protected Date createdAt;
 	
 	@LastModifiedBy
-	protected User updatedBy;
+	protected U updatedBy;
 	
 	@LastModifiedDate
 	//@Temporal(TemporalType.TIMESTAMP)
