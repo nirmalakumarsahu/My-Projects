@@ -1,11 +1,11 @@
 package com.sahu.um.util;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import com.sahu.um.constants.PermissionConstants;
 import com.sahu.um.service.dto.CustomUserDetailsDTO;
@@ -73,8 +73,10 @@ public class SecurityUtil {
 			} else {
 				List<String> permissionList = user.getUserPermissions();
 
-				for (String permission : permissions) {
-					return permissionList.contains(permission);
+				if(permissionList!=null && permissions.length>0) {
+					if(CollectionUtils.containsAny(permissionList, Arrays.asList(permissions))) {
+						return true;
+					}
 				}
 			}
 		}

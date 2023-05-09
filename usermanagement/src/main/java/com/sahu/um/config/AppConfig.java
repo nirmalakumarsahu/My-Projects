@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.sahu.um.service.impl.AuditorAwareImpl;
 
@@ -16,4 +17,8 @@ public class AppConfig {
 		return new AuditorAwareImpl();
 	}
 	
+	@Bean
+	public BCryptPasswordEncoder createBCPEncoder() {
+		return new BCryptPasswordEncoder();
+	} 
 }
