@@ -1,0 +1,25 @@
+.logo-div {
+	display: flex;
+}
+
+#logo-heading {
+    font-size: 2rem;
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+#menu li a {
+    color: #ffffff;
+    padding: 15px 10px;
+    display: block;
+}
+
+#menu li a:hover {
+	text-decoration: none;
+    background: #127a8b;
+}
+
+.logo-image {
+	height: 50px;
+	width: 50px;
+}

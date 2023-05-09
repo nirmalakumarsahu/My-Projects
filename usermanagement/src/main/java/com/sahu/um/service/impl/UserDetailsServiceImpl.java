@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.sahu.um.constants.RoleConstants;
 import com.sahu.um.model.Permission;
@@ -19,6 +20,7 @@ import com.sahu.um.repository.RoleRepository;
 import com.sahu.um.repository.UserRepository;
 import com.sahu.um.service.dto.CustomUserDetailsDTO;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private final Logger LOGGER = Logger.getLogger(UserDetailsServiceImpl.class);
