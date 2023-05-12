@@ -2,6 +2,8 @@ package com.sahu.um.config;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +14,12 @@ import com.sahu.um.service.impl.AuditorAwareImpl;
 @Component
 @Configurable
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
+@PropertySources({
+	@PropertySource("classpath:properties/login.properties"),
+	@PropertySource("classpath:properties/registration.properties"),
+	@PropertySource("classpath:properties/role.properties"),
+	@PropertySource("classpath:properties/permission.properties")
+})
 public class AppConfig {
 
 	@Bean

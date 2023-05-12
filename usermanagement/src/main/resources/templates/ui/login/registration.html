@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/img/logo/user-logo.png}">
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>User Management | Sign Up</title>
+	<title>[[${@environment.getProperty('signup_title')} ? ${@environment.getProperty('signup_title')} : 'User Management | Sign Up']]</title>
 
 	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -19,7 +19,7 @@
 		<div class="container h-100">
 			<div class="row justify-content-md-center h-auto pt-5" >
 				<div class="col-md-6 pt-5">
-					<img class="register-image" th:src="@{/img/login/registration.png}" alt="registration">
+					<img class="register-image" th:src="@{/images/login/registration.png}" alt="registration">
 				</div>
 				<div class="col-md-6 p-5">
 					<div class="card-wrapper pl-5">
@@ -36,32 +36,32 @@
 
 						<div class="card fat">
 							<div class="card-body">
-								<h4 class="card-title">Register</h4>
+								<h4 class="card-title text-center">[[${@environment.getProperty('register_heading')} ? ${@environment.getProperty('register_heading')} : 'Register']]</h4>
 								<form method="POST" class="my-login-validation"  th:action="@{/user/registration}" th:object="${user}">
 	
 										<div class="form-group">
-											<label for="firstName">First Name</label> <input
+											<label for="firstName">[[${@environment.getProperty('first_name_label')} ? ${@environment.getProperty('first_name_label')} : 'First Name']]</label> <input
 												id="firstName" th:field="*{firstName}" type="text"
 												class="form-control" name="firstName" required autofocus>
 											<div class="invalid-feedback">What's your First name?</div>
 										</div>
 	
 										<div class="form-group">
-											<label for="lastName">Last Name</label> <input id="lastName"
+											<label for="lastName">[[${@environment.getProperty('last_name_label')} ? ${@environment.getProperty('last_name_label')} : 'Last Name']]</label> <input id="lastName"
 												th:field="*{lastName}" type="text" class="form-control"
 												name="lastName" required>
 											<div class="invalid-feedback">What's your Last Name?</div>
 										</div>
 	
 										<div class="form-group">
-											<label for="email">Email Address</label> <input id="email"
+											<label for="email">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email Address']]</label> <input id="email"
 												th:field="*{email}" type="email" class="form-control"
 												name="email" required>
 											<div class="invalid-feedback">Your email is invalid</div>
 										</div>
 	
 										<div class="form-group">
-											<label for="password">Password</label> <input id="password"
+											<label for="password">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label> <input id="password"
 												th:field="*{password}" type="password" class="form-control"
 												name="password" required data-eye>
 											<div class="invalid-feedback">Password is required</div>
@@ -70,10 +70,10 @@
 										<div class="form-group">
 											<div class="custom-checkbox custom-control">
 												<input type="checkbox" name="agree" id="agree"
-													class="custom-control-input" required=""> <label
-													for="agree" class="custom-control-label">I agree to
-													the <a href="#">Terms and Conditions</a>
-												</label>
+													class="custom-control-input" required/> 
+												<label for="agree" class="custom-control-label">[[${@environment.getProperty('agree_label')} ? ${@environment.getProperty('agree_label')} : 'I agree to the']]</label>
+												<a href="#">[[${@environment.getProperty('terms_condition_link')} ? ${@environment.getProperty('terms_condition_link')} : 'Terms and Conditions']]</a>
+												
 												<div class="invalid-feedback">You must agree with our
 													Terms and Conditions</div>
 											</div>
@@ -81,10 +81,11 @@
 	
 										<div class="form-group m-0">
 											<button type="submit" class="btn btn-primary btn-block">
-												Register</button>
+												[[${@environment.getProperty('register_btn')} ? ${@environment.getProperty('register_btn')} : 'Register']]</button>
 										</div>
 										<div class="mt-4 text-center">
-											Already have an account? <a th:href="@{/login}">Login</a>
+											<label>[[${@environment.getProperty('already_have_acc_label')} ? ${@environment.getProperty('already_have_acc_label')} : 'Already have an account?']]</label>
+											<a th:href="@{/login}">[[${@environment.getProperty('login_link')} ? ${@environment.getProperty('login_link')} : 'Login']]</a>
 										</div>
 								</form>
 							</div>
