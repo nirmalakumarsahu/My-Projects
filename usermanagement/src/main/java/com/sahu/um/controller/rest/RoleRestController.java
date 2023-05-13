@@ -1,10 +1,10 @@
-package com.sahu.um.controller;
+package com.sahu.um.controller.rest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/client/role")
-public class RoleController {
+@RequestMapping("/api/role")
+public class RoleRestController {
 
 }

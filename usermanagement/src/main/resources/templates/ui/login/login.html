@@ -63,21 +63,21 @@
 			  	<form method="post" th:action="@{/login}">
 					<!-- Email input -->
 					<div class="form-outline mb-4">
-						<label class="form-label" for="form1Example13">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email address']]</label>
-				  		<input type="email" id="form1Example13" class="form-control form-control-lg" name="username" required autofocus/>
+						<label class="form-label" for="email">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email address']]</label>
+				  		<input type="email" id="email_input" class="form-control form-control-lg" name="username" required autofocus/>
 					</div>
 	  
 					<!-- Password input -->
 					<div class="form-outline mb-4">
-						<label class="form-label" for="form1Example23">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label>
-					 	<input type="password" id="form1Example23" class="form-control form-control-lg" name="password" required/>
+						<label class="form-label" for="password">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label>
+					 	<input type="password" id="password_input" class="form-control form-control-lg" name="password" required/>
 					</div>
 	  
 					<div class="d-flex justify-content-around align-items-center mb-4">
 				  		<!-- Checkbox -->
 				  		<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-							<label class="form-check-label" for="form1Example3"> [[${@environment.getProperty('remember_me_label')} ? ${@environment.getProperty('remember_me_label')} : 'Remember me']]</label>
+							<input class="form-check-input" type="checkbox" value="" id="remember_me_input" checked />
+							<label class="form-check-label" for="remember_me"> [[${@environment.getProperty('remember_me_label')} ? ${@environment.getProperty('remember_me_label')} : 'Remember me']]</label>
 				  		</div>
 				  		<a th:href="@{/forgetpassword}">[[${@environment.getProperty('forget_password_link')} ? ${@environment.getProperty('forget_password_link')} : 'Forgot password?']]</a>
 					</div>
@@ -87,7 +87,7 @@
 					
 					<!-- Registration -->
 					<div class="mt-4 text-center">
-						<label>[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label>
+						<label  for="dont_have_acc">[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label>
 						<a th:href="@{/registration}">[[${@environment.getProperty('signup_link')} ? ${@environment.getProperty('signup_link')} : 'SignUp']]</a>
 					</div>
 			  	</form>

@@ -1,26 +1,16 @@
 package com.sahu.um.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import com.sahu.um.service.impl.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-	
-	@Autowired
-	private UserDetailsServiceImpl userDetailsServiceImpl;
-	
-	@Autowired(required = true)
-	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
@@ -30,7 +20,7 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(request->
-				request.antMatchers("/**", "/login", "/registration", "/forgetpassword").permitAll()
+				request.antMatchers("/", "/login", "/registration", "/forgetpassword").permitAll()
 				.anyRequest().authenticated()
 			)
 			.csrf().disable()
@@ -40,7 +30,7 @@ public class SecurityConfiguration {
 					.failureUrl("/login?error")
 					.usernameParameter("username")
 					.passwordParameter("password")
-					.defaultSuccessUrl("/user/dashboard", true))
+					.defaultSuccessUrl("/client/user/dashboard", true))
 			.logout(logout -> logout 
 					.logoutUrl("/logout")
 					.invalidateHttpSession(true)
@@ -50,10 +40,10 @@ public class SecurityConfiguration {
 					.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
 					.invalidSessionUrl("/invalidsession")
 					.maximumSessions(1)
-					.maxSessionsPreventsLogin(true)
+					.maxSessionsPreventsLogin(false)
 					.expiredUrl("/login?session-expire"))
 			.exceptionHandling()
-			.accessDeniedHandler(null);
+			.accessDeniedPage("/accessdenied");
 		return http.build();
 	}
 	

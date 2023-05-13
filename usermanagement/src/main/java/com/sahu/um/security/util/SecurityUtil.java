@@ -1,4 +1,4 @@
-package com.sahu.um.util;
+package com.sahu.um.security.util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -65,7 +65,7 @@ public class SecurityUtil {
 		return false;
 	}
 	
-	public static Boolean hasAnyPermissions(String... permissions) {
+	public static Boolean hasAnyPermission(String... permissions) {
 		CustomUserDetailsDTO user = getCurrentUser();
 		if (user != null) {
 			if (isGlobalAdmin(user)) {

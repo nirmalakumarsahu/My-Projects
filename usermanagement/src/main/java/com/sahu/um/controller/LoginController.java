@@ -67,6 +67,4 @@ public class LoginController {
 		return LVNConstants.FORGET_PASSWORD_PAGE;
 	}
 	
-	
-	
 }
