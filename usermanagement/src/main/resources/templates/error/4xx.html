@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>[[${@environment.getProperty('4xx_title')} ? ${@environment.getProperty('4xx_title')} : 'User Management | 4xx']]</title>
 </head>
 <body>
-
+	4XX
 </body>
 </html>

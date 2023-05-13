@@ -37,7 +37,7 @@
 						<div class="card fat">
 							<div class="card-body">
 								<h4 class="card-title text-center">[[${@environment.getProperty('register_heading')} ? ${@environment.getProperty('register_heading')} : 'Register']]</h4>
-								<form method="POST" class="my-login-validation"  th:action="@{/user/registration}" th:object="${user}">
+								<form method="POST" class="my-login-validation"  th:action="@{/registration}" th:object="${user}">
 	
 										<div class="form-group">
 											<label for="firstName">[[${@environment.getProperty('first_name_label')} ? ${@environment.getProperty('first_name_label')} : 'First Name']]</label> <input

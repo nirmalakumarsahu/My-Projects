@@ -1,6 +1,7 @@
 package com.sahu.um.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
@@ -37,15 +38,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public CustomUserDetailsDTO loadUserByUsername(String username) throws UsernameNotFoundException {
 		LOGGER.debug("Inside loadUserByUsername() method");
-		User user = userRepository.findByEmail(username);
+		Optional<User> user = userRepository.findByEmail(username);
 		LOGGER.info("User - " + user);
 		
-		if (user == null) {
+		if (user.get() == null) {
 			throw new UsernameNotFoundException("User is not exist");
-		} else if (!user.getActive()) {
+		} else if (!user.get().getActive()) {
 			throw new UsernameNotFoundException("User is not active, please contact admin!");
 		} else {
-			Long loggedInUserId = user.getId();
+			Long loggedInUserId = user.get().getId();
 			List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(RoleConstants.ROLE_USER));
 			
 			//Here we have to write the logic to collect Roles and permission
@@ -55,7 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			List<String> userRoles = roleList.stream().map(Role::getName).collect(Collectors.toList());
 			List<String> userPermissions = permissionList.stream().map(Permission::getName).collect(Collectors.toList());
 			
-			return new CustomUserDetailsDTO(user.getEmail(), user.getPassword(), authorities, loggedInUserId, userRoles, userPermissions);
+			return new CustomUserDetailsDTO(user.get().getEmail(), user.get().getPassword(), authorities, loggedInUserId, userRoles, userPermissions);
 		}
 	}
 

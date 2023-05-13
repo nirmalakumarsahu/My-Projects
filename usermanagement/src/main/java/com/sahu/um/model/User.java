@@ -14,11 +14,9 @@ import javax.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
 @NoArgsConstructor
 @Entity
 public class User extends Auditable<Long> implements Serializable {

@@ -79,7 +79,7 @@
 							<input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
 							<label class="form-check-label" for="form1Example3"> [[${@environment.getProperty('remember_me_label')} ? ${@environment.getProperty('remember_me_label')} : 'Remember me']]</label>
 				  		</div>
-				  		<a th:href="@{/user/showForgetPassword}">[[${@environment.getProperty('forget_password_link')} ? ${@environment.getProperty('forget_password_link')} : 'Forgot password?']]</a>
+				  		<a th:href="@{/forgetpassword}">[[${@environment.getProperty('forget_password_link')} ? ${@environment.getProperty('forget_password_link')} : 'Forgot password?']]</a>
 					</div>
 	  
 					<!-- Submit button -->
@@ -88,7 +88,7 @@
 					<!-- Registration -->
 					<div class="mt-4 text-center">
 						<label>[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label>
-						<a th:href="@{/login-process/showRegistration}">[[${@environment.getProperty('signup_link')} ? ${@environment.getProperty('signup_link')} : 'SignUp']]</a>
+						<a th:href="@{/registration}">[[${@environment.getProperty('signup_link')} ? ${@environment.getProperty('signup_link')} : 'SignUp']]</a>
 					</div>
 			  	</form>
 			  	
