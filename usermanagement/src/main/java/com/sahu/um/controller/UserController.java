@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sahu.um.constants.LVNConstants;
-import com.sahu.um.security.util.SecurityUtil;
 import com.sahu.um.service.dto.CustomUserDetailsDTO;
+import com.sahu.um.util.security.SecurityUtil;
 
 @Controller
 @RequestMapping("/client/user")

@@ -1,4 +1,4 @@
-package com.sahu.um.security.util;
+package com.sahu.um.util.security;
 
 import java.util.Arrays;
 import java.util.List;

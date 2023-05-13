@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.sahu.um.constants.UserManagementConstants;
 import com.sahu.um.model.User;
-import com.sahu.um.security.util.SecurityUtil;
 import com.sahu.um.service.UserService;
 import com.sahu.um.service.dto.CustomUserDetailsDTO;
+import com.sahu.um.util.security.SecurityUtil;
 
 @Service
 public class AuditorAwareImpl implements AuditorAware<Long> {
