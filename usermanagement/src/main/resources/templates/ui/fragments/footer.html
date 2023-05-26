@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<footer th:fragment="footer">
+		<div class="row ft_r">
+			<div class="ft_logo">
+				<img alt="footer logo" class="ft_l_im"
+					th:src="@{/images/logo/user-logo.png}"></img>
+			</div>
+			<div class="copy_right">
+				<p>&copy; [[${@environment.getProperty('copy_right_reserved')} ? ${@environment.getProperty('copy_right_reserved')} : '2023. WebTech Solution. All Rights Reserved.']]</p>
+			</div>
+			<div class="f_tab">
+				
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

@@ -19,8 +19,6 @@ public class UserController {
 	public String dashBoardPage() {
 		CustomUserDetailsDTO loggedInUserDetails = SecurityUtil.getCurrentUser();
 		LOGGER.info("Roles - "+loggedInUserDetails.getUserRoles());
-		//LOGGER.info("Permissions - "+loggedInUserDetails.getUserPermissions());
-		//LOGGER.info("Check For Global Admin - "+SecurityUtil.isGlobalAdmin(loggedInUserDetails));
 		return LVNConstants.DASHBOARD_PAGE;
 	}
 	

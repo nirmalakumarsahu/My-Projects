@@ -1,0 +1,15 @@
+ul.navbar-nav.flex.justify-content-end {
+    flex: auto !important;
+}
+
+.header_log {
+	width: 50px;
+}
+
+a.nav-link {
+    color: white !important;
+}
+
+li.nav-item.active {
+    border-bottom: 3px solid #b638e8c9;
+}

@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
 	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}">
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
@@ -19,7 +21,9 @@
 	<!-- Own JS -->
 </head>
 <body>
+	<div th:insert="/ui/fragments/header :: menu"></div>
 	DASH BOARD
-	<a th:href="@{/logout}">Logout</a>
+	
+	<div th:insert="/ui/fragments/footer :: footer"></div>
 </body>
 </html>
