@@ -4,7 +4,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>User Management | Dashboard</title>
+	<title>[[${@environment.getProperty('assign_role_title')} ? ${@environment.getProperty('assign_role_title')} : 'User Management | Assign Role']]</title>
 	
 	 <!-- Third party CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}">
@@ -24,7 +24,7 @@
 	<div th:insert="/ui/fragments/header :: menu"></div>
 	
 	<div class="container-fluid">
-		DASH BOARD
+		ASSIGN ROLE
 	</div>
 	
 	<div th:insert="/ui/fragments/footer :: footer"></div>

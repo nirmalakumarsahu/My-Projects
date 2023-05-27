@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-	<header th:fragment="menu">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<img alt="header logo" class="header_log"
-				th:src="@{/images/logo/user-logo.png}"></img>
+	<nav class="navbar navbar-expand-lg" th:fragment="menu">
+		<img alt="header logo" class="header_log"
+			th:src="@{/images/logo/user-logo.png}"></img>
 
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav justify-content-end" style='flex: auto;'>
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Action 1</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Action 2</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Action 3</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button"
-							data-toggle="dropdown" aria-expanded="false"> 
-							<i class="fa fa-user-circle-o"></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Sub Action 1</a></li>
-							<li><a class="dropdown-item" href="#">Sub Action 2</a></li>
-							<li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav justify-content-end" style='flex: auto;'>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/client/user/dashboard}">Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Action 2</a>
+				</li>
+				<li class="nav-item dropdown">
+       				<a class="nav-link dropdown-toggle" href="#" role="button" 
+       					data-toggle="dropdown" aria-expanded="false">
+         				Administration
+       				</a>
+       				<ul class="dropdown-menu">
+         					<li><a class="dropdown-item" th:href="@{/client/user/list}">Users</a></li>
+         					<li><a class="dropdown-item" th:href="@{/client/role/list}">Roles</a></li>
+       				</ul>
+     			</li>
+				<li class="nav-item">
+					<a class="nav-link" href="mailto:support@webtechsolution.com">Contact Us</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+						data-toggle="dropdown" aria-expanded="false"> 
+						<i class="fa fa-user-circle-o"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<li><a class="dropdown-item" href="#">Edit Profile</a></li>
+						<li><a class="dropdown-item" href="#">Settings</a></li>
+						<li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
 </body>
 </html>

@@ -8,10 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @PropertySources({
+	@PropertySource("classpath:properties/error.properties"),
+	@PropertySource("classpath:properties/header_footer.properties"),
 	@PropertySource("classpath:properties/login.properties"),
 	@PropertySource("classpath:properties/role.properties"),
-	@PropertySource("classpath:properties/permission.properties"),
-	@PropertySource("classpath:properties/error.properties"),
 	@PropertySource("classpath:properties/user.properties")
 })
 public class AppConfig {
