@@ -38,6 +38,11 @@ a.dropdown-item {
     color: white;
 }
 
-.user-profile {
+.user_profile {
 	font-size: 20px;
+}
+
+.main_body {
+	height: 574px;
+	background: #ecf9f5;
 }

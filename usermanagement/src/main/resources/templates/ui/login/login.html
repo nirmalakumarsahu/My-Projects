@@ -27,9 +27,9 @@
 	<div class="container py-5 h-100">
 		<div class="row d-flex align-items-center justify-content-center h-100">
 			<div class="col-md-8 col-lg-7 col-xl-6">
-				<img class="login-image" th:src="@{/images/login/login.png}" alt="login">
+				<img class="login_image" th:src="@{/images/login/login.png}" alt="login">
 			</div>
-			<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 login-bord p-5">
+			<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 login_bord p-5">
 				
 				<!-- password changed successful msg -->
 				<div th:if="${isPasswordChangedSuccessfully} !=null"
@@ -71,13 +71,13 @@
 					<!-- Email input -->
 					<div class="form-outline mb-4">
 						<label class="form-label" for="email">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email address']]</label>
-				  		<input type="email" id="email_input" class="form-control form-control-lg" name="username" required autofocus/>
+				  		<input type="email" id="email_input" class="form-control" name="username" required autofocus/>
 					</div>
 	  
 					<!-- Password input -->
 					<div class="form-outline mb-4">
 						<label class="form-label" for="password">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label>
-					 	<input type="password" id="password_input" class="form-control form-control-lg" name="password" required/>
+					 	<input type="password" id="password_input" class="form-control" name="password" required/>
 					</div>
 	  
 					<div class="d-flex justify-content-around align-items-center mb-4">
@@ -94,7 +94,7 @@
 					
 					<!-- Registration -->
 					<div class="mt-4 text-center">
-						<label  for="dont_have_acc">[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label>
+						<label for="dont_have_acc">[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label>
 						<a th:href="@{/registration}">[[${@environment.getProperty('signup_link')} ? ${@environment.getProperty('signup_link')} : 'SignUp']]</a>
 					</div>
 			  	</form>

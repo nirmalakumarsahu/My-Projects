@@ -1,7 +1,5 @@
-.login-bord{
-	background-color: #fff;
-}
-
-.form-control-lg {
-	font-size: 15px !important;
+.login_bord{
+	background-color: #4034340f;
+	border: 1px solid #4034340f;
+	border-radius: 20px;
 }
