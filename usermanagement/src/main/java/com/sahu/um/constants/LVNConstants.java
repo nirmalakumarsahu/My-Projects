@@ -18,6 +18,8 @@ public interface LVNConstants {
 	public static final String ADD_EDIT_USER_PAGE = "/ui/user/add_user";
 	
 	public static final String ASSIGN_ROLE_PAGE = "/ui/user/assign_role";
+
+	public static final String EDIT_PROFILE_PAGE = "/ui/user/edit_profile";
 	
 	// ROLE
 	public static final String ROLE_LIST_PAGE = "/ui/role/role_list";

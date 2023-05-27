@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
     <meta charset="utf-8">
@@ -7,11 +8,11 @@
     <title>[[${@environment.getProperty('not_found_title')} ? ${@environment.getProperty('not_found_title')} : 'User Management | 404 Not Found']]</title>
     
     <!-- Third party CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
 	<!-- Own CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/error/404.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/error/404.css}"/>
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>

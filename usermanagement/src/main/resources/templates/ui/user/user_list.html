@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>[[${@environment.getProperty('user_list_title')} ? ${@environment.getProperty('user_list_title')} : 'User Management | User List']]</title>
 	
-	 <!-- Third party CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}">
+	<!-- Third party CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/sweetalert2.min.css}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
 	<!-- Own CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/sweetalert2.all.min.js}"></script>
 	
 	<!-- Own JS -->
 </head>
+
 <body>
 	<div th:insert="/ui/fragments/header :: menu"></div>
 	
@@ -29,4 +33,5 @@
 	
 	<div th:insert="/ui/fragments/footer :: footer"></div>
 </body>
+
 </html>

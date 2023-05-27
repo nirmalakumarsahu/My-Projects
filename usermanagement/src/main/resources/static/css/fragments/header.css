@@ -37,3 +37,7 @@ li.nav-item {
 a.dropdown-item {
     color: white;
 }
+
+.user-profile {
+	font-size: 20px;
+}
