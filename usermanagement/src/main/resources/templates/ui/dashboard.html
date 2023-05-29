@@ -15,6 +15,7 @@
 	<!-- Own CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/loading_mask.css}"/>
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
@@ -27,15 +28,25 @@
 <body>
 	<div th:insert="/ui/fragments/header :: menu"></div>
 	
-	<div class="container-fluid main_body">
-		DASH BOARD
-		<input type="button" class="btn btn-info" value="Click Me" onclick="showSweetAlert()"/>
+	<div id="loading-mask">
+        <img th:src="@{/images/global/load_mask.gif}" alt="Loading..." />
+    </div>
+    
+	<div class="main_body">
+		<div class="container-fluid">
+			DASH BOARD
+			<input type="button" class="btn btn-info" value="Click Me" onclick="showSweetAlert()"/>
+		</div>
 	</div>
 	
 	<div th:insert="/ui/fragments/footer :: footer"></div>
 </body>
 
 <script th:inline="javascript">
+	$(window).on('load', function () {
+    	$("#loading-mask").hide(); 
+ 	});
+	
 	function showSweetAlert() {
 		Swal.fire({
 			icon: 'info',

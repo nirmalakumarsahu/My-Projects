@@ -37,7 +37,7 @@ public class UserController {
 		return LVNConstants.ASSIGN_ROLE_PAGE;
 	}
 	
-	@GetMapping("/edit-profile")
+	@GetMapping({"/edit-profile", "/action2"})
 	public String showEditProfilePage() {
 		return LVNConstants.EDIT_PROFILE_PAGE;
 	}
