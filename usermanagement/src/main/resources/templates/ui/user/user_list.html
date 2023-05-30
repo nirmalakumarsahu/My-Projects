@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/loading_mask.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user/user_list.css}"/>
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
@@ -33,7 +34,10 @@
     </div>
     
 	<div class="container-fluid main_body">
-		USER LIST
+		<div class="row justify-content-end pt-3 pr-5">
+			<a class="btn btn-primary" th:href="@{/client/user/add}">Add User</a>
+		</div>
+		
 	</div>
 	
 	<div th:insert="/ui/fragments/footer :: footer"></div>
