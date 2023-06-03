@@ -15,6 +15,7 @@ import com.sahu.um.constants.Status;
 import com.sahu.um.model.User;
 import com.sahu.um.repository.UserRepository;
 import com.sahu.um.service.UserService;
+import com.sahu.um.service.dto.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,6 +45,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification) {
 		return userRepository.findAll(dataTablesInput, specification);
+	}
+
+	@Override
+	public Boolean addUser(UserDTO userDTO) {
+		User user = new User();
+		user.setFirstName(userDTO.getFirstName());
+		user.setLastName(userDTO.getLastName());
+		user.setEmail(userDTO.getEmail());
+		user.setUuid(UUID.randomUUID().toString());
+		user.setStatus(Status.ACTIVE.getValue());
+		user.setActive(true);
+		return userRepository.save(user)!=null?true:false;
 	}
 	
 }

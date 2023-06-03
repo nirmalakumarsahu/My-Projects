@@ -1,8 +1,8 @@
-.logo-div {
+.logo_div {
 	display: flex;
 }
 
-#logo-heading {
+.logo_h1 {
     font-size: 2rem;
     margin-top: 5px;
     padding-left: 15px;
@@ -19,7 +19,7 @@
     background: #127a8b;
 }
 
-.logo-image {
+.logo_img {
 	height: 50px;
 	width: 50px;
 }

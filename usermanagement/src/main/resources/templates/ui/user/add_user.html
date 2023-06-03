@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/loading_mask.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user/add_user.css}"/>
 	
 	<!-- Third party JS -->
 	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
@@ -28,12 +30,69 @@
 <body>
 	<div th:insert="/ui/fragments/header :: menu"></div>
 	
-	<div id="loading-mask">
+	<div id="loadingMask">
         <img th:src="@{/images/global/load_mask.gif}" alt="Loading..." />
     </div>
 	
-	<div class="container-fluid main_body">
-		
+	<div class="container-fluid main_body_div">
+		<form method="POST" th:object="${UserDTO}" th:action="@{/client/user/add}" id="addUserForm">
+			<div class="page_heading_div">[[${@environment.getProperty('add_user_heading')} ? ${@environment.getProperty('add_user_heading')} : 'Add User']]</div>
+			
+			<div class="add_user_form_div">
+	  			<div class="row">
+					<div class="col-md-12">
+	  					<div class="form-group">
+	    					<label for="firstName" class="field_label">
+	    						[[${@environment.getProperty('first_name_label')} ? ${@environment.getProperty('first_name_label')} : 'First Name']] 
+	    						<span class="required_field_spn">*</span>
+	    					</label>
+	    					<input type="text" class="form-control" id="firstName" th:value="${firstName}" th:name="firstName"/>
+	    					<div class="validation_msg_text_color_div" id="firstNameValidationMsg"></div>
+	  					</div>
+	  				</div>
+	  			</div>
+	  			
+	  			<div class="row">
+					<div class="col-md-12">
+	  					<div class="form-group">
+	    					<label for="lastName" class="field_label">
+	    						[[${@environment.getProperty('last_name_label')} ? ${@environment.getProperty('last_name_label')} : 'Last Name']] 
+	    						<span class="required_field_spn">*</span>
+	    					</label>
+	    					<input type="text" class="form-control" id="lastName" th:value="${lastName}" th:name="lastName"/>
+	    					<div class="validation_msg_text_color_div" id="lasstNameValidationMsg"></div>
+	  					</div>
+	  				</div>
+	  			</div>
+	  			
+	  			<div class="row">
+					<div class="col-md-12">
+	  					<div class="form-group">
+	    					<label for="email" class="field_label">
+	    						[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email']] 
+	    						<span class="required_field_spn">*</span>
+	    					</label>
+	    					<input type="email" class="form-control" id="email" th:value="${email}" th:name="email"/>
+	    					<div class="validation_msg_text_color_div" id="emailValidationMsg"></div>
+	  					</div>
+	  				</div>
+	  			</div>
+	  			
+	  			<div class="all_btns_div">
+	  				<button type="reset" class="btn btn-outline-dark cancel_rest_btn">
+	  					[[${@environment.getProperty('clear_btn')} ? ${@environment.getProperty('clear_btn')} : 'Clear']]
+	  				</button>
+	  				<button type="button" class="btn btn-outline-secondary cancel_rest_btn" th:onclick="window.location.href='/client/user/list'">
+	  					[[${@environment.getProperty('cancel_btn')} ? ${@environment.getProperty('cancel_btn')} : 'Cancel']]
+	  				</button>
+	  				<button type="button" class="btn btn-primary cust_btn" id="addUserSubmitBtn">
+	  					<i class="fa fa-plus-circle"></i>
+	  					[[${@environment.getProperty('add_user_btn')} ? ${@environment.getProperty('add_user_btn')} : 'Add User']]
+	  				</button>
+	  			</div>
+	  			
+	  		</div>
+		</form>
 	</div>
 	
 	<div th:insert="/ui/fragments/footer :: footer"></div>
@@ -41,8 +100,45 @@
 
 <script th:inline="javascript">
 	$(window).on('load', function () {
-    	$("#loading-mask").hide(); 
+    	$("#loadingMask").hide(); 
  	});
+	
+	$(document).ready(function() {
+		//Success and error message handle 
+		var success = [[${success}]];
+		var error = [[${error}]];
+		
+		if(success!=null) {
+			Swal.fire({
+				icon: 'success',
+				title: 'Good Job!',
+			  	text: success,
+			  	confirmButtonColor: '#563D7C'
+			}).then(function() {
+				$("#loadingMask").show(); 
+				window.location = "/client/user/list";
+			});
+		}
+		
+		if(error!=null) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error!',
+			  	text: error,
+			  	confirmButtonColor: '#563D7C'
+			}).then(function() {
+				$("#loadingMask").show(); 
+				window.location = "/client/user/list";
+			});
+		}
+		
+		//Form submission validation code
+		$('#addUserSubmitBtn').click(function(){
+			console.log("Clicked");
+			$("#addUserForm").submit();
+		});
+		
+	});
 </script>
 
 </html>

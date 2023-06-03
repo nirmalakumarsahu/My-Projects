@@ -25,7 +25,7 @@
 		<div class="container h-100">
 			<div class="row justify-content-md-center h-auto pt-5" >
 				<div class="col-md-6 pt-5">
-					<img class="register_image" th:src="@{/images/login/registration.png}" alt="registration">
+					<img class="register_img" th:src="@{/images/login/registration.png}" alt="registration">
 				</div>
 				<div class="col-md-6 p-5">
 					<div class="card-wrapper pl-5">
@@ -47,29 +47,29 @@
 	
 										<div class="form-group">
 											<label for="firstName">[[${@environment.getProperty('first_name_label')} ? ${@environment.getProperty('first_name_label')} : 'First Name']]</label> <input
-												id="firstName" th:field="*{firstName}" type="text"
-												class="form-control" name="firstName" required autofocus>
+												id="firstName" type="text"
+												class="form-control" th:name="firstName" required autofocus>
 											<div class="invalid-feedback">What's your First name?</div>
 										</div>
 	
 										<div class="form-group">
 											<label for="lastName">[[${@environment.getProperty('last_name_label')} ? ${@environment.getProperty('last_name_label')} : 'Last Name']]</label> <input id="lastName"
-												th:field="*{lastName}" type="text" class="form-control"
-												name="lastName" required>
+												type="text" class="form-control"
+												th:name="lastName" required>
 											<div class="invalid-feedback">What's your Last Name?</div>
 										</div>
 	
 										<div class="form-group">
 											<label for="email">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email Address']]</label> <input id="email"
-												th:field="*{email}" type="email" class="form-control"
-												name="email" required>
+												type="email" class="form-control"
+												th:name="email" required>
 											<div class="invalid-feedback">Your email is invalid</div>
 										</div>
 	
 										<div class="form-group">
 											<label for="password">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label> <input id="password"
-												th:field="*{password}" type="password" class="form-control"
-												name="password" required data-eye>
+												type="password" class="form-control"
+												th:name="password" required data-eye>
 											<div class="invalid-feedback">Password is required</div>
 										</div>
 	

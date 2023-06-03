@@ -7,6 +7,7 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.sahu.um.model.User;
+import com.sahu.um.service.dto.UserDTO;
 
 public interface UserService {
 
@@ -15,4 +16,6 @@ public interface UserService {
 	public Long registerUser(User user);
 	
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification);
+	
+	public Boolean addUser(UserDTO userDTO);
 }

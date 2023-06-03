@@ -40,7 +40,7 @@ public class LoginController {
 	@PostMapping("/registration")
 	public String registrationProcess(Map<String, Object> map, @ModelAttribute("user") User user) {
 		LOGGER.debug("Inside registrationProcess() method");
-		LOGGER.info("User data - "+user);
+		LOGGER.info("User data - "+user.getEmail());
 		if (user.getEmail() != null) {
 			Optional<User> isExist = userService.findByEmail(user.getEmail());
 			

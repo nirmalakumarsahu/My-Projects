@@ -10,5 +10,4 @@ public interface UserRepository extends DataTablesRepository<User, Long> {
 	
 	public Optional<User> findByEmail(String email);
 	
-	
 }
