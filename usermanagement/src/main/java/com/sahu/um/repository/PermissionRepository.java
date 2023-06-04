@@ -15,4 +15,6 @@ public interface PermissionRepository extends DataTablesRepository<Permission, L
 			+ "INNER JOIN role_user ru ON ru.role_id = r.id "
 			+ "WHERE ru.user_id =:userId AND p.active IS TRUE", nativeQuery = true)
 	public List<Permission> getAllPermissionsOfUserByUserId(Long userId);
+	
+	public List<Permission> findByActive(Boolean active);
 }

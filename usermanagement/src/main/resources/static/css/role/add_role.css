@@ -1,0 +1,20 @@
+.page_heading_div {
+	width: 92%;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 11px 0px;
+    font-size: 24px;
+    color: #425563;
+    text-align: center;
+}
+
+.add_role_form_div {
+	width: 40%;
+    margin: 0 auto;
+    padding-bottom: 55px;
+}
+
+.all_btns_div {
+	text-align: center;
+    padding-top: 10px;
+}

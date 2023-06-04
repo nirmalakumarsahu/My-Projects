@@ -69,7 +69,7 @@ public class UserController {
 			if(userService.addUser(userDTO))
 				redirectAttributes.addFlashAttribute(UserManagementConstants.SUCCESS, "User added successfully");
 			else
-				redirectAttributes.addFlashAttribute(UserManagementConstants.ERROR, "Error while adding user");
+				redirectAttributes.addFlashAttribute(UserManagementConstants.ERROR, "Error while adding User");
 		}
 		
 		return "redirect:/client/user/add";
