@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +25,7 @@ import com.sahu.um.service.dto.CustomUserDetailsDTO;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private final Logger LOGGER = Logger.getLogger(UserDetailsServiceImpl.class);
+	private final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
 	@Autowired
 	private UserRepository userRepository;

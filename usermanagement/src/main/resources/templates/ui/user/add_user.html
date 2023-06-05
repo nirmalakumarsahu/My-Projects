@@ -60,7 +60,7 @@
 	    						<span class="required_field_spn">*</span>
 	    					</label>
 	    					<input type="text" class="form-control" id="lastName" th:value="${lastName}" th:name="lastName"/>
-	    					<div class="validation_msg_text_color_div" id="lasstNameValidationMsg"></div>
+	    					<div class="validation_msg_text_color_div" id="lastNameValidationMsg"></div>
 	  					</div>
 	  				</div>
 	  			</div>
@@ -100,12 +100,13 @@
 
 <script th:inline="javascript">
 	$(window).on('load', function () {
-    	$("#loadingMask").hide(); 
+    	$('#loadingMask').hide(); 
  	});
 	
 	$(document).ready(function() {
 		//Success and error message handle 
 		var success = [[${success}]];
+		console.log(success);
 		var error = [[${error}]];
 		
 		if(success!=null) {
@@ -115,8 +116,8 @@
 			  	text: success,
 			  	confirmButtonColor: '#563D7C'
 			}).then(function() {
-				$("#loadingMask").show(); 
-				window.location = "/client/user/list";
+				$('#loadingMask').show(); 
+				window.location = '/client/user/list';
 			});
 		}
 		
@@ -127,18 +128,69 @@
 			  	text: error,
 			  	confirmButtonColor: '#563D7C'
 			}).then(function() {
-				$("#loadingMask").show(); 
-				window.location = "/client/user/list";
+				$('#loadingMask').show(); 
+				window.location = '/client/user/list';
 			});
 		}
 		
 		//Form submission validation code
 		$('#addUserSubmitBtn').click(function(){
-			console.log("Clicked");
-			$("#addUserForm").submit();
+			console.log('Clicked');
+			var regName = /^[A-Za-z. ]+$/;
+			var fistName = $('#firstName').val();
+			var lastName = $('#lastName').val();
+			var isValidated = true;
+			
+			// fistName
+			if (fistName=='' || fistName.length==0) {
+				isValidated = false;
+				$('#firstNameValidationMsg').text('First Name is required').show();
+			}
+			else if (!regName.test(fistName)) {
+				isValidated = false;
+				$('#firstNameValidationMsg').text('First Name is invalid').show();
+			}
+			else if (fistName.length<3) {
+				isValidated = false;
+				$('#firstNameValidationMsg').text('First Name is too short').show();
+			}
+			else if (fistName.length>20) {
+				isValidated = false;
+				$('#firstNameValidationMsg').text('First Name is too long').show();
+			}
+			
+			// lastName
+			if (lastName=='' || lastName.length==0) {
+				isValidated = false;
+				$('#lastNameValidationMsg').text('Last Name is required').show();
+			}
+			else if (!regName.test(lastName)) {
+				isValidated = false;
+				$('#lastNameValidationMsg').text('Last Name is invalid').show();
+			}
+			else if (lastName.length<3) {
+				isValidated = false;
+				$('#lastNameValidationMsg').text('Last Name is too short').show();
+			}
+			else if (lastName.length>20) {
+				isValidated = false;
+				$('#lastNameValidationMsg').text('Last Name is too long').show();
+			}
+			
+			if(isValidated) {
+				$('#addUserForm').submit();
+			}
 		});
 		
-	});
+		$('input').keyup(function() {
+			var inputValueLength = $(this).val().length;
+			console.log("Length - "+inputValueLength);
+			if(inputValueLength >=3 && inputValueLength <= 20) {
+				$(this).next().hide();
+			}
+		});
+		
+	}); //document
 </script>
 
 </html>

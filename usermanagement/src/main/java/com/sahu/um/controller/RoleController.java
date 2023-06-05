@@ -3,7 +3,8 @@ package com.sahu.um.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ import com.sahu.um.service.dto.RoleDTO;
 @RequestMapping("/client/role")
 public class RoleController {
 	
-	private final Logger LOGGER = Logger.getLogger(UserController.class);
+	private Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	private RoleService roleService;

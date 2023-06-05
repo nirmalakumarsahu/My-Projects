@@ -3,7 +3,6 @@ package com.sahu.um.service.impl;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -19,8 +18,6 @@ import com.sahu.um.service.dto.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-	private final Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private UserRepository userRepository;

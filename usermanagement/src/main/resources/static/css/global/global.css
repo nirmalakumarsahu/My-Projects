@@ -3,7 +3,7 @@ body{
 }
 
 .main_body_div {
-	height: 574px;
+	height: 573px;
 	background: #ecf9f5;
 }
 
@@ -20,8 +20,9 @@ body{
 
 .validation_msg_text_color_div {
     color: red;
-    font-size: 14px;
+    font-size: 13px;
     padding-left: 0px;
+    font-weight: 500;
 }
 
 /*form controls customization*/

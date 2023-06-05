@@ -11,36 +11,59 @@
 				<li class="nav-item active">
 					<a class="nav-link" th:href="@{/client/user/dashboard}">Dashboard</a>
 				</li>
+				
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/client/user/action2}">Action 2</a>
 				</li>
+				
 				<li class="nav-item dropdown">
        				<a class="nav-link dropdown-toggle" href="#" role="button" 
        					data-toggle="dropdown" aria-expanded="false">
-         				Administration
+         				[[${@environment.getProperty('administration_a')} ? ${@environment.getProperty('administration_a')} : 'Administration']]
        				</a>
        				<ul class="dropdown-menu">
-         					<li><a class="dropdown-item" th:href="@{/client/user/list}">Users</a></li>
-         					<li><a class="dropdown-item" th:href="@{/client/role/list}">Roles</a></li>
+         				<li>
+         					<a class="dropdown-item" th:href="@{/client/user/list}">
+         						[[${@environment.getProperty('users_a')} ? ${@environment.getProperty('users_a')} : 'Users']]
+         					</a>
+         				</li>
+         				<li>
+         					<a class="dropdown-item" th:href="@{/client/role/list}">
+         						[[${@environment.getProperty('roles_a')} ? ${@environment.getProperty('roles_a')} : 'Roles']]
+         					</a>
+         				</li>
        				</ul>
      			</li>
-				<li class="nav-item">
-					<a class="nav-link" href="mailto:support@webtechsolution.com">Contact Us</a>
-				</li>
+				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button"
 						data-toggle="dropdown" aria-expanded="false"> 
 						<i class="fa fa-user-circle-o user_profile_i"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end">
-						<li><a class="dropdown-item" th:href="@{/client/user/edit-profile}">Edit Profile</a></li>
-						<li><a class="dropdown-item" href="#">Settings</a></li>
-						<li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+						<li>
+							<a class="dropdown-item" th:href="@{/client/user/edit-profile}">
+								<i class="fa fa-user user_menu_i"></i> 
+								[[${@environment.getProperty('profile_a')} ? ${@environment.getProperty('profile_a')} : 'Profile']]
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">
+								<i class="fa fa-cogs user_menu_i"></i> 
+								[[${@environment.getProperty('settings_a')} ? ${@environment.getProperty('settings_a')} : 'Settings']]
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" th:href="@{/logout}">
+								<i class="fa fa-sign-out user_menu_i"></i> 
+								[[${@environment.getProperty('logout_a')} ? ${@environment.getProperty('logout_a')} : 'Logout']]
+							</a>
+						</li>
 					</ul>
 				</li>
 			</ul>
 		</div>
+		
 	</nav>
-	
 </body>
 </html>

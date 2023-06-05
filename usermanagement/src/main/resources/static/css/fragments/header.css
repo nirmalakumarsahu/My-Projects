@@ -16,17 +16,17 @@ a.nav-link {
 }
 
 li.nav-item.active {
-    border-bottom: 4px solid #b638e8;
+    border-bottom: 5px solid #b638e8;
 }
 
 ul.dropdown-menu.dropdown-menu-end.show {
-    left: -80px !important;
-    top: 45px;
+    left: -73px !important;
+    top: 50px;
     background: #563D7C;
 }
 
 ul.dropdown-menu.show {
-    top: 45px;
+    top: 50px;
     background: #563D7C;
 }
 
@@ -38,6 +38,13 @@ a.dropdown-item {
     color: white;
 }
 
+nav.navbar.navbar-expand-lg {
+    line-height: 1.9;
+}
 .user_profile_i {
 	font-size: 20px;
+}
+
+.user_menu_i {
+	margin-right: 0.5rem !important;
 }

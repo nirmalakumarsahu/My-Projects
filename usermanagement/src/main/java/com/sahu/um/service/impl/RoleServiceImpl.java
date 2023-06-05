@@ -3,7 +3,6 @@ package com.sahu.um.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +15,6 @@ import com.sahu.um.service.dto.RoleDTO;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-
-	private final Logger LOGGER = Logger.getLogger(RoleServiceImpl.class);
 
 	@Autowired
 	private RoleRepository roleRepository;
