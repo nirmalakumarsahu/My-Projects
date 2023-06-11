@@ -18,13 +18,13 @@ import com.sahu.um.service.dto.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Override
 	public Optional<User> findByEmail(String email) {
 		return userRepository.findByEmail(email);
@@ -43,15 +43,14 @@ public class UserServiceImpl implements UserService {
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput) {
 		return userRepository.findAll(dataTablesInput);
 	}
-	
-	
+
 	@Override
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification) {
 		return userRepository.findAll(dataTablesInput, specification);
 	}
 
 	@Override
-	public Boolean addUser(UserDTO userDTO) {
+	public Boolean saveUser(UserDTO userDTO) {
 		User user = new User();
 		user.setFirstName(userDTO.getFirstName());
 		user.setLastName(userDTO.getLastName());
@@ -59,7 +58,7 @@ public class UserServiceImpl implements UserService {
 		user.setUuid(UUID.randomUUID().toString());
 		user.setStatus(Status.ACTIVE.getValue());
 		user.setActive(true);
-		return userRepository.save(user)!=null?true:false;
+		return userRepository.save(user) != null ? true : false;
 	}
 
 }

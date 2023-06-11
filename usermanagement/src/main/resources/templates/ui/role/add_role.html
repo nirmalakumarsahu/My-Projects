@@ -5,8 +5,8 @@
 	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title th:if="${roleDTO == null}">[[${@environment.getProperty('add_role_title')} ? ${@environment.getProperty('add_role_title')} : 'User Management | Add Role']]</title>
-	<title th:unless="${roleDTO == null}">[[${@environment.getProperty('edit_role_title')} ? ${@environment.getProperty('edit_role_title')} : 'User Management | Edit Role']]</title>
+	<title th:if="${id == null}">[[${@environment.getProperty('add_role_title')} ? ${@environment.getProperty('add_role_title')} : 'User Management | Add Role']]</title>
+	<title th:unless="${id == null}">[[${@environment.getProperty('edit_role_title')} ? ${@environment.getProperty('edit_role_title')} : 'User Management | Edit Role']]</title>
 	
 	<!-- Third party CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
@@ -32,8 +32,10 @@
 	
 	<div class="container-fluid main_body_div">
 		<form method="POST" th:action="@{/client/role/add}" th:object=${roleDTO} id="addRoleForm">
-			<div class="page_heading_div">[[${@environment.getProperty('add_role_heading')} ? ${@environment.getProperty('add_role_heading')} : 'Add Role']]</div>
+			<div class="page_heading_div" th:if="${id == null}">[[${@environment.getProperty('add_role_heading')} ? ${@environment.getProperty('add_role_heading')} : 'Add Role']]</div>
+			<div class="page_heading_div" th:unless="${id == null}">[[${@environment.getProperty('edit_role_heading')} ? ${@environment.getProperty('edit_role_heading')} : 'Edit Role']]</div>
 			
+			<input type="hidden" class="form-control" id="roleId" th:name="id" th:value="${id}">
 			<div class="add_role_form_div">
 	  			<div class="row">
 					<div class="col-md-12">
@@ -77,7 +79,12 @@
 	  				</button>
 	  				<button type="button" class="btn btn-primary cust_btn" id="addRoleSubmitBtn">
 	  					<i class="fa fa-plus-circle"></i>
-	  					[[${@environment.getProperty('add_role_btn')} ? ${@environment.getProperty('add_role_btn')} : 'Add Role']]
+	  					<span th:if="${id == null}">
+	  						[[${@environment.getProperty('add_role_btn')} ? ${@environment.getProperty('add_role_btn')} : 'Add Role']]
+	  					</span>
+	  					<span th:unless="${id == null}">
+	  						[[${@environment.getProperty('edit_role_btn')} ? ${@environment.getProperty('edit_role_btn')} : 'Edit Role']]
+	  					</span>
 	  				</button>
 	  			</div>
 	  			
@@ -120,6 +127,12 @@
 				$("#loadingMask").show(); 
 				window.location = "/client/role/list";
 			});
+		}
+		
+		
+		var roleId = [[${id}]];
+		if (roleId != null) {
+			$("#addRoleForm").attr("action", '/client/role/' + roleId + '/edit');
 		}
 		
 		//Form submission validation code

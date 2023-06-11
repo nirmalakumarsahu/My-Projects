@@ -19,6 +19,6 @@ public interface UserService {
 
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification);
 	
-	public Boolean addUser(UserDTO userDTO);
+	public Boolean saveUser(UserDTO userDTO);
 	
 }

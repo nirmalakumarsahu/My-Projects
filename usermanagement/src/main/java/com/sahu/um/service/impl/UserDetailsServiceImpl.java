@@ -32,16 +32,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private PermissionRepository permissionRepository;
-	
+
 	@Override
 	public CustomUserDetailsDTO loadUserByUsername(String username) throws UsernameNotFoundException {
 		LOGGER.debug("Inside loadUserByUsername() method");
 		Optional<User> user = userRepository.findByEmail(username);
 		LOGGER.info("User - " + user);
-		
+
 		if (user.get() == null) {
 			throw new UsernameNotFoundException("User is not exist");
 		} else if (!user.get().getActive()) {
@@ -49,15 +49,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		} else {
 			Long loggedInUserId = user.get().getId();
 			List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(RoleConstants.ROLE_USER));
-			
-			//Here we have to write the logic to collect Roles and permission
+
+			// Here we have to write the logic to collect Roles and permission
 			List<Role> roleList = roleRepository.getRolesOfUserByUserId(loggedInUserId);
 			List<Permission> permissionList = permissionRepository.getAllPermissionsOfUserByUserId(loggedInUserId);
-			
+
 			List<String> userRoles = roleList.stream().map(Role::getName).collect(Collectors.toList());
-			List<String> userPermissions = permissionList.stream().map(Permission::getName).collect(Collectors.toList());
-			
-			return new CustomUserDetailsDTO(user.get().getEmail(), user.get().getPassword(), authorities, loggedInUserId, userRoles, userPermissions);
+			List<String> userPermissions = permissionList.stream().map(Permission::getName)
+					.collect(Collectors.toList());
+
+			return new CustomUserDetailsDTO(user.get().getEmail(), user.get().getPassword(), authorities,
+					loggedInUserId, userRoles, userPermissions);
 		}
 	}
 

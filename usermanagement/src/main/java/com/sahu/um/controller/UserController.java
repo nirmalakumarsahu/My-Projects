@@ -25,54 +25,53 @@ import com.sahu.um.util.security.SecurityUtil;
 public class UserController {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping("/dashboard")
 	public String showDashBoardPage() {
 		CustomUserDetailsDTO loggedInUserDetails = SecurityUtil.getCurrentUser();
-		LOGGER.info("Roles - "+loggedInUserDetails.getUserRoles());
+		LOGGER.info("Roles - " + loggedInUserDetails.getUserRoles());
 		return LVNConstants.DASHBOARD_PAGE;
 	}
-	
+
 	@GetMapping("/list")
 	public String showUserListPage() {
 		return LVNConstants.USER_LIST_PAGE;
 	}
-	
+
 	@GetMapping("/add")
 	public String showAddUserPage() {
 		return LVNConstants.ADD_EDIT_USER_PAGE;
 	}
-	
+
 	@GetMapping("/assign-role")
 	public String showAssignRolePage() {
 		return LVNConstants.ASSIGN_ROLE_PAGE;
 	}
-	
-	@GetMapping({"/edit-profile", "/action2"})
+
+	@GetMapping({ "/edit-profile", "/action2" })
 	public String showEditProfilePage() {
 		return LVNConstants.EDIT_PROFILE_PAGE;
 	}
-	
+
 	@PostMapping("/add")
 	public String addUser(@ModelAttribute("userDTO") UserDTO userDTO, RedirectAttributes redirectAttributes) {
 		LOGGER.debug("Inside addUser() method");
-		LOGGER.info("User Details - "+userDTO.getEmail());
-		
+		LOGGER.info("User Details - " + userDTO.getEmail());
+
 		Optional<User> isUserExist = userService.findByEmail(userDTO.getEmail());
-		if(isUserExist.isPresent()) {
+		if (isUserExist.isPresent()) {
 			redirectAttributes.addFlashAttribute(UserManagementConstants.ERROR, "User already exist");
-		}
-		else {
-			if(userService.addUser(userDTO))
+		} else {
+			if (userService.saveUser(userDTO))
 				redirectAttributes.addFlashAttribute(UserManagementConstants.SUCCESS, "User added successfully");
 			else
 				redirectAttributes.addFlashAttribute(UserManagementConstants.ERROR, "Error while adding User");
 		}
-		
+
 		return "redirect:/client/user/add";
 	}
-	
+
 }
