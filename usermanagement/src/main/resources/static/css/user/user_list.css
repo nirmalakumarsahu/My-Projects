@@ -1,0 +1,23 @@
+/*Data table customization*/
+select.custom-select.custom-select-sm.form-control.form-control-sm {
+    width: 50px;
+    height: 30px;
+    font-size: small;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    height: 33px;
+}
+
+#userTable {
+	font-size: 14px;
+}
+
+#userTable>thead {
+    background: #563D7C;
+    color: white;
+}
+
+#userTable>tbody {
+    background: white;
+}

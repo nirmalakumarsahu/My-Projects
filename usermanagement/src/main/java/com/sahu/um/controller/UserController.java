@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,7 +57,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/add")
-	public String addUser(@ModelAttribute UserDTO userDTO, Model model, RedirectAttributes redirectAttributes) {
+	public String addUser(@ModelAttribute("userDTO") UserDTO userDTO, RedirectAttributes redirectAttributes) {
 		LOGGER.debug("Inside addUser() method");
 		LOGGER.info("User Details - "+userDTO.getEmail());
 		

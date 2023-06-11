@@ -8,22 +8,29 @@
 	<title>[[${@environment.getProperty('user_list_title')} ? ${@environment.getProperty('user_list_title')} : 'User Management | User List']]</title>
 	
 	<!-- Third party CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/sweetalert2.min.css}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-
+	
+	<!-- DataTable CSS --> 
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/datatable.css}"/>
+ 	
 	<!-- Own CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/loading_mask.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/user/user_list.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user/user_list.css}"/>
 	
 	<!-- Third party JS -->
-	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/global/sweetalert2.all.min.js}"></script>
 	
+	<!-- DataTable JS -->
+	<script type="text/javascript" th:src="@{/datatable/js/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/dataTables.bootstrap4.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/jquery.spring-friendly.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/dataTables.searchPanes.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/searchPanes.bootstrap4.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/dataTables.select.min.js}"></script>
+	<script type="text/javascript" th:src="@{/datatable/js/select.bootstrap4.min.js}"></script>
+
 	<!-- Own JS -->
 </head>
 
@@ -35,9 +42,23 @@
     </div>
     
 	<div class="container-fluid main_body_div">
-		<div class="row justify-content-end pt-3 pr-5">
+		<div class="row justify-content-end pt-3 pr-5 pb-3">
 			<a class="btn btn-primary cust_btn" th:href="@{/client/user/add}">Add User</a>
 		</div>
+		
+		<table id="userTable" class="display nowrap" style="width: 100%">
+			<thead>
+				<tr>
+               		<th>[[${@environment.getProperty('id_th')} ? ${@environment.getProperty('id_th')} : 'Id' ]]</th>
+					<th>[[${@environment.getProperty('first_name_th')} ? ${@environment.getProperty('first_name_th')} : 'First Name' ]]</th>
+					<th>[[${@environment.getProperty('last_name_th')} ? ${@environment.getProperty('last_name_th')} : 'Last Name' ]]</th>
+					<th>[[${@environment.getProperty('email_th')} ? ${@environment.getProperty('email_th')} : 'Email']]</th>
+					<th>[[${@environment.getProperty('roles_th')} ? ${@environment.getProperty('roles_th')} : 'Roles']]</th>
+					<th>[[${@environment.getProperty('status_th')} ? ${@environment.getProperty('status_th')} : 'Status']]</th>
+					<th>[[${@environment.getProperty('actions_th')} ? ${@environment.getProperty('actions_th')} : 'Actions']]</th>
+				</tr>
+			</thead>
+		</table>
 		
 	</div>
 	
@@ -48,6 +69,64 @@
 	$(window).on('load', function () {
     	$("#loadingMask").hide(); 
  	});
+	
+	$(document).ready(function() {
+		let userTable = $('#userTable').DataTable({
+			ajax : '/api/user/list',
+		    serverSide : true,
+		    order: [
+ 	            [1, 'asc']
+ 	        ],
+ 	        columns: [
+	    		{
+			      	data : 'id', visible: false, 
+			      	searchPanes: {show: false , initCollapsed: true}
+		    	}, 
+		    	{
+		      		data : 'firstName', width:'20%', 
+		      		searchPanes: { show: false , initCollapsed: true}
+		    	},
+		    	{
+		      		data : 'lastName', width:'20%', 
+		      		searchPanes: { show: false , initCollapsed: true}
+		    	},
+		    	{
+		    		data: "email", width:'20%', 
+		    		searchPanes: { show: false , initCollapsed: false}
+		    	},
+		    	{
+		    		data: "roles", width:'20%', 
+		    		render: function (data, type, full, meta) {
+		    			var rolesStr = '__';
+	                    $.each(data, function (index, role) {
+	                    	rolesStr += role + ', ';
+	                   	});
+	                    rolesStr = rolesStr.length > 2 ? rolesStr.slice(2, -2):rolesStr;
+	                    return '<span data-toggle="tooltip" title="' + rolesStr + '">' + rolesStr + '</span>';
+		    		},
+		    		searchPanes: { show: false , initCollapsed: false}
+		    	},
+		    	{
+		    		data: "status", width:'20%', 
+		    		searchPanes: { show: true , initCollapsed: false}
+		    	},
+		    	{
+		    		data: "uuid", width:'10%', 
+		    		render: function (td, cellData, rowData, row, col) {
+						return '<i id="' + rowData["uuid"] + '" class="fa fa-ellipsis-h fa-1x"></i>';
+                	},
+                	searchPanes: { show: false , initCollapsed: true}
+   		    	}
+			],
+			
+			pageLength: 5,
+			"lengthMenu": [5, 10, 25, 50, 100],
+		    "oLanguage": {
+                "sEmptyTable": "No data found"
+            },
+			responsive: true
+		});
+	});
 </script>
 
 </html>

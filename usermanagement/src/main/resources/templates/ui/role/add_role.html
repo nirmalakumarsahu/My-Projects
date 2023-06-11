@@ -5,17 +5,13 @@
 	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>[[${@environment.getProperty('add_role_title')} ? ${@environment.getProperty('add_role_title')} : 'User Management | Add Role']]</title>
+	<title th:if="${roleDTO == null}">[[${@environment.getProperty('add_role_title')} ? ${@environment.getProperty('add_role_title')} : 'User Management | Add Role']]</title>
+	<title th:unless="${roleDTO == null}">[[${@environment.getProperty('edit_role_title')} ? ${@environment.getProperty('edit_role_title')} : 'User Management | Edit Role']]</title>
 	
 	<!-- Third party CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/sweetalert2.min.css}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
 	<!-- Own CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/header.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fragments/footer.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/global/loading_mask.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/role/add_role.css}"/>
 		
@@ -35,7 +31,7 @@
     </div>
 	
 	<div class="container-fluid main_body_div">
-		<form method="POST" th:action="@{/client/role/add}" th:object=${RoleDTO} id="addRoleForm">
+		<form method="POST" th:action="@{/client/role/add}" th:object=${roleDTO} id="addRoleForm">
 			<div class="page_heading_div">[[${@environment.getProperty('add_role_heading')} ? ${@environment.getProperty('add_role_heading')} : 'Add Role']]</div>
 			
 			<div class="add_role_form_div">
@@ -60,8 +56,13 @@
 	    						<span class="required_field_spn">*</span>
 	    					</label>
 	    					
-	    					<div class="form-check" th:each="permission : ${permissionList}">
+	    					<div class="form-check" th:each="permission : ${permissionList}" th:if="${permissions == null}">
         						<input class="form-check-input" type="checkbox" th:text="${permission.name}" th:value="${permission.id}" th:name="permissions"/>
+      						</div>
+
+	    					<div class="form-check" th:each="permission : ${permissionList}" th:unless="${permissions == null}">
+        						<input class="form-check-input" type="checkbox" th:text="${permission.name}" th:value="${permission.id}" 
+        							th:checked="${permissions.contains(permission)}" th:name="permissions"/>
       						</div>
       						
       						<div class="validation_msg_text_color_div" id="permissionValidationMsg"></div>

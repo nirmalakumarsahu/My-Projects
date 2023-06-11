@@ -18,7 +18,7 @@ import com.sahu.um.service.dto.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -40,6 +40,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput) {
+		return userRepository.findAll(dataTablesInput);
+	}
+	
+	
+	@Override
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification) {
 		return userRepository.findAll(dataTablesInput, specification);
 	}
@@ -55,5 +61,5 @@ public class UserServiceImpl implements UserService {
 		user.setActive(true);
 		return userRepository.save(user)!=null?true:false;
 	}
-	
+
 }

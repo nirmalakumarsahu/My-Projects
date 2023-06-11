@@ -15,7 +15,10 @@ public interface UserService {
 	
 	public Long registerUser(User user);
 	
+	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput);
+
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification);
 	
 	public Boolean addUser(UserDTO userDTO);
+	
 }

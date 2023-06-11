@@ -1,5 +1,7 @@
 package com.sahu.um.service.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,4 +15,6 @@ public class UserDTO {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String status;
+	private List<String> roles;
 }

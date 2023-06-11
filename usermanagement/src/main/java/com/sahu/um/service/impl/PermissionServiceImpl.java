@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.sahu.um.model.Permission;
 import com.sahu.um.repository.PermissionRepository;
 import com.sahu.um.service.PermissionService;
-import com.sahu.um.service.dto.PermissionDTO;
-import com.sahu.um.service.util.PermissionUtil;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -19,8 +17,8 @@ public class PermissionServiceImpl implements PermissionService {
 	private PermissionRepository permissionRepository;
 	
 	@Override
-	public List<PermissionDTO> findAll() {
-		return PermissionUtil.toPermissionDTO(permissionRepository.findByActive(true));
+	public List<Permission> findAll() {
+		return permissionRepository.findByActive(true);
 	}
 
 	@Override

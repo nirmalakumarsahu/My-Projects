@@ -1,4 +1,4 @@
-package com.sahu.um.service.util;
+package com.sahu.um.service.specification;
 
 import org.springframework.stereotype.Component;
 
