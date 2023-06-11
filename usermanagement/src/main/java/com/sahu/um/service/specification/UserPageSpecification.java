@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.criteria.Predicate;
 
@@ -22,28 +21,27 @@ import com.sahu.um.service.util.UserUtil;
 
 @Component
 public class UserPageSpecification {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	public DataTablesOutput<UserDTO> getUsers(DataTablesInput dataTablesInput, Map<String, String> queryParams) {
-		
+
 		dataTablesInput.parseSearchPanesFromQueryParams(queryParams, Arrays.asList("status"));
 		Set<String> status = dataTablesInput.getSearchPanes().remove("status");
 		Specification<User> userSpecification = createSimpleSpecification("status", status);
-		
+
 		DataTablesOutput<User> dataTablesOutputUser = null;
-		if(userSpecification != null)
+		if (userSpecification != null)
 			dataTablesOutputUser = userService.findAll(dataTablesInput, userSpecification);
 		else
 			dataTablesOutputUser = userService.findAll(dataTablesInput);
-		
-		
+
 		List<UserDTO> userDTOList = null;
-		if(dataTablesOutputUser.getData() != null) {
-			userDTOList = dataTablesOutputUser.getData().stream().map(user->UserUtil.toUserDTo(user)).collect(Collectors.toList());
+		if (dataTablesOutputUser.getData() != null) {
+			userDTOList = UserUtil.toUserDTo(dataTablesOutputUser.getData());
 		}
-		
+
 		DataTablesOutput<UserDTO> dataTablesOutputUserDTO = new DataTablesOutput<>();
 		dataTablesOutputUserDTO.setData(userDTOList);
 		dataTablesOutputUserDTO.setDraw(dataTablesOutputUser.getDraw());
@@ -53,16 +51,15 @@ public class UserPageSpecification {
 		dataTablesOutputUserDTO.setSearchPanes(dataTablesOutputUser.getSearchPanes());
 
 		return dataTablesOutputUserDTO;
-	} 
-	
-	
+	}
+
 	private Specification<User> createSimpleSpecification(String fieldName, Set<String> entries) {
 		if (entries.isEmpty()) {
 			return null;
 		}
 		return (root, query, criteriaBuilder) -> {
 			List<Predicate> predicates = new ArrayList<>();
-			
+
 			if (entries.contains("null")) {
 				predicates.add(root.get(fieldName).isNull());
 			} else {

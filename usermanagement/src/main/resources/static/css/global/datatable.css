@@ -2,3 +2,27 @@
 @import "/datatable/css/dataTables.bootstrap4.min.css";
 @import "/datatable/css/searchPanes.bootstrap4.min.css";
 @import "/datatable/css/select.bootstrap4.min.css";
+
+/*Data table customization*/
+select.custom-select.custom-select-sm.form-control.form-control-sm {
+    width: 50px;
+    height: 30px;
+    font-size: small;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    height: 33px;
+}
+
+.data_table_cust {
+	font-size: 14px;
+}
+
+.data_table_cust>thead {
+    background: #563D7C;
+    color: white;
+}
+
+.data_table_cust>tbody {
+    background: white;
+}

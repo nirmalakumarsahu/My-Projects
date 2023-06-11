@@ -21,10 +21,11 @@ public class UserRestController {
 
 	@Autowired
 	private UserPageSpecification userPageSpecification;
-	
+
 	@GetMapping("/list")
-	public DataTablesOutput<UserDTO> getUsers(@Valid DataTablesInput dataTablesInput, @RequestParam Map<String, String> queryParams) {
+	public DataTablesOutput<UserDTO> getUsers(@Valid DataTablesInput dataTablesInput,
+			@RequestParam Map<String, String> queryParams) {
 		return userPageSpecification.getUsers(dataTablesInput, queryParams);
 	}
-	
+
 }

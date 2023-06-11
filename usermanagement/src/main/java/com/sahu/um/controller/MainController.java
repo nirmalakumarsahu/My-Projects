@@ -7,10 +7,10 @@ import com.sahu.um.constants.LVNConstants;
 
 @Controller
 public class MainController {
-	
+
 	@GetMapping("/")
 	public String showLoginPage() {
 		return LVNConstants.INDEX_PAGE;
 	}
-	
+
 }

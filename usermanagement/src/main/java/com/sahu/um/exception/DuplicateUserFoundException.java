@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DuplicateUserFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public DuplicateUserFoundException(String errorMessage) {
 		super(errorMessage);
 	}
-	
+
 }

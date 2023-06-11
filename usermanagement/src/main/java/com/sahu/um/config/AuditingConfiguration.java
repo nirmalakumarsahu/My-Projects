@@ -15,5 +15,5 @@ public class AuditingConfiguration {
 	public AuditorAware<Long> auditorAware() {
 		return new AuditorAwareImpl();
 	}
-	
+
 }

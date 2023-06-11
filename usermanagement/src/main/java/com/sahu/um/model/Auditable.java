@@ -21,15 +21,15 @@ import lombok.Setter;
 public abstract class Auditable<U> {
 	@CreatedBy
 	protected U createdBy;
-	
+
 	@CreatedDate
-	//@Temporal(TemporalType.TIMESTAMP)
+	// @Temporal(TemporalType.TIMESTAMP)
 	protected Date createdAt;
-	
+
 	@LastModifiedBy
 	protected U updatedBy;
-	
+
 	@LastModifiedDate
-	//@Temporal(TemporalType.TIMESTAMP)
+	// @Temporal(TemporalType.TIMESTAMP)
 	protected Date updatedAt;
 }

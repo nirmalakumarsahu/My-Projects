@@ -12,8 +12,11 @@ import com.sahu.um.service.dto.PermissionDTO;
 public class PermissionUtil {
 
 	public static List<PermissionDTO> toPermissionDTO(List<Permission> permissionList) {
-		return permissionList.stream().map(permission -> new PermissionDTO(permission.getId(), permission.getName()))
-				.collect(Collectors.toList());
+		return permissionList.stream().map(permission -> toPermissionDTO(permission)).collect(Collectors.toList());
+	}
+
+	public static PermissionDTO toPermissionDTO(Permission permission) {
+		return new PermissionDTO(permission.getId(), permission.getName());
 	}
 
 }

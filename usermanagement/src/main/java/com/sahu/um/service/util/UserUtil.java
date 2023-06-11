@@ -1,5 +1,6 @@
 package com.sahu.um.service.util;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -9,6 +10,10 @@ import com.sahu.um.service.dto.UserDTO;
 
 @Component
 public class UserUtil {
+
+	public static List<UserDTO> toUserDTo(List<User> userList) {
+		return userList.stream().map(user -> toUserDTo(user)).collect(Collectors.toList());
+	}
 
 	public static UserDTO toUserDTo(User user) {
 		UserDTO userDTO = new UserDTO();

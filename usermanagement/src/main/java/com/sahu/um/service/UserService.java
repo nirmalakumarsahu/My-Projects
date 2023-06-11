@@ -12,13 +12,13 @@ import com.sahu.um.service.dto.UserDTO;
 public interface UserService {
 
 	public Optional<User> findByEmail(String email);
-	
+
 	public Long registerUser(User user);
-	
+
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput);
 
 	public DataTablesOutput<User> findAll(DataTablesInput dataTablesInput, Specification<User> specification);
-	
+
 	public Boolean saveUser(UserDTO userDTO);
-	
+
 }

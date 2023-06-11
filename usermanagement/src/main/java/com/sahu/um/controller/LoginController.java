@@ -19,15 +19,15 @@ import com.sahu.um.service.UserService;
 
 @Controller
 public class LoginController {
-	
+
 	private Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private Environment environment;
-	
+
 	@GetMapping("/login")
 	public String showLoginPage() {
 		return LVNConstants.LOGIN_PAGE;
@@ -37,29 +37,27 @@ public class LoginController {
 	public String showRegistrationPage(@ModelAttribute("user") User user) {
 		return LVNConstants.REGISTRATION_PAGE;
 	}
-	
+
 	@PostMapping("/registration")
 	public String registrationProcess(Map<String, Object> map, @ModelAttribute("user") User user) {
 		LOGGER.debug("Inside registrationProcess() method");
-		LOGGER.info("User data - "+user.getEmail());
+		LOGGER.info("User data - " + user.getEmail());
 		if (user.getEmail() != null) {
 			Optional<User> isExist = userService.findByEmail(user.getEmail());
-			
+
 			if (isExist.isPresent()) {
 				map.put(LoginConstants.REGISTRATION_ERROR, environment.getProperty("duplicate_user_error_msg"));
 				return LVNConstants.REGISTRATION_PAGE;
-			}
-			else {
+			} else {
 				Long registeredUserId = userService.registerUser(user);
-				if (registeredUserId!=null) {
+				if (registeredUserId != null) {
 					map.put(LoginConstants.REGISTRATION_SUCCESS, environment.getProperty("registration_success_msg"));
-				}
-				else {
+				} else {
 					map.put(LoginConstants.REGISTRATION_ERROR, environment.getProperty("registration_failed_msg"));
 				}
 			}
 		}
-		
+
 		return LVNConstants.LOGIN_PAGE;
 	}
 
@@ -67,5 +65,5 @@ public class LoginController {
 	public String showForgetPasswordPage(@ModelAttribute("user") User user) {
 		return LVNConstants.FORGET_PASSWORD_PAGE;
 	}
-	
+
 }

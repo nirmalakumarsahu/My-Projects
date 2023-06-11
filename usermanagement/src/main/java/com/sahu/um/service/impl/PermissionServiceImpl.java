@@ -15,7 +15,7 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Autowired
 	private PermissionRepository permissionRepository;
-	
+
 	@Override
 	public List<Permission> findAll() {
 		return permissionRepository.findByActive(true);
@@ -27,5 +27,5 @@ public class PermissionServiceImpl implements PermissionService {
 		permissionRepository.findAllById(ids).forEach(PermissionList::add);
 		return PermissionList;
 	}
-	
+
 }

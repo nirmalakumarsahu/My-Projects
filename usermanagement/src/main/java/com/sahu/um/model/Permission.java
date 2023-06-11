@@ -19,20 +19,20 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Permission extends Auditable<Long> implements Serializable  {
+public class Permission extends Auditable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String description;
-	
+
 	private Boolean active;
-	
-	@ManyToMany(mappedBy="permissions")
+
+	@ManyToMany(mappedBy = "permissions")
 	private List<Role> roles;
 }

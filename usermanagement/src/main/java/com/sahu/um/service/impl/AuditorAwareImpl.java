@@ -23,8 +23,7 @@ public class AuditorAwareImpl implements AuditorAware<Long> {
 		CustomUserDetailsDTO userDetailsDTO = SecurityUtil.getCurrentUser();
 		if (userDetailsDTO != null) {
 			return Optional.of(userDetailsDTO.getUserId());
-		}
-		else {
+		} else {
 			Optional<User> user = userService.findByEmail(UserManagementConstants.UM_SUPPORT_EMAIL);
 			return Optional.of(user.get().getId());
 		}

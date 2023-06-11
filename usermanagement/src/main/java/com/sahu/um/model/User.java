@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,6 +39,5 @@ public class User extends Auditable<Long> implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "role_user", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })
-	@JsonIgnore
 	private List<Role> roles;
 }
