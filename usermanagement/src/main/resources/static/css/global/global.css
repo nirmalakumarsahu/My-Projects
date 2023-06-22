@@ -3,7 +3,6 @@
 @import "/css/fragments/header.css";
 @import "/css/fragments/footer.css";
 @import "/css/global/loading_mask.css";
-@import "/css/global/global.css";
 
 body{
 	font-family: system-ui;

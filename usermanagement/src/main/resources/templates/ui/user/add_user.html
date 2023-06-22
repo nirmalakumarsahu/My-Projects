@@ -99,9 +99,9 @@
  	});
 	
 	$(document).ready(function() {
+		var regName = /^[A-Za-z. ]+$/;
 		//Success and error message handle 
 		var success = [[${success}]];
-		console.log(success);
 		var error = [[${error}]];
 		
 		if(success!=null) {
@@ -131,51 +131,42 @@
 		//Form submission validation code
 		$('#addUserSubmitBtn').click(function(){
 			console.log('Clicked');
-			var regName = /^[A-Za-z. ]+$/;
 			var fistName = $('#firstName').val();
 			var lastName = $('#lastName').val();
 			var isValidated = true;
 			
-			// fistName
-			if (fistName=='' || fistName.length==0) {
-				isValidated = false;
-				$('#firstNameValidationMsg').text('First Name is required').show();
-			}
-			else if (!regName.test(fistName)) {
-				isValidated = false;
-				$('#firstNameValidationMsg').text('First Name is invalid').show();
-			}
-			else if (fistName.length<3) {
-				isValidated = false;
-				$('#firstNameValidationMsg').text('First Name is too short').show();
-			}
-			else if (fistName.length>20) {
-				isValidated = false;
-				$('#firstNameValidationMsg').text('First Name is too long').show();
-			}
-			
-			// lastName
-			if (lastName=='' || lastName.length==0) {
-				isValidated = false;
-				$('#lastNameValidationMsg').text('Last Name is required').show();
-			}
-			else if (!regName.test(lastName)) {
-				isValidated = false;
-				$('#lastNameValidationMsg').text('Last Name is invalid').show();
-			}
-			else if (lastName.length<3) {
-				isValidated = false;
-				$('#lastNameValidationMsg').text('Last Name is too short').show();
-			}
-			else if (lastName.length>20) {
-				isValidated = false;
-				$('#lastNameValidationMsg').text('Last Name is too long').show();
-			}
+			isValidated = checKName(fistName, '#firstNameValidationMsg');
+			isValidated = checKName(lastName, '#lastNameValidationMsg');
 			
 			if(isValidated) {
 				$('#addUserForm').submit();
 			}
 		});
+		
+		function checKName(name, validationMsg) {
+			var isValidated = true;
+			var fieldName = validationMsg.includes('firstName') ? 'First Name':'Last Name';
+			
+			if (name=='' || name.length==0) {
+				isValidated = false;
+				$(validationMsg).text(fieldName+' is required').show();
+			}
+			else if (!regName.test(name)) {
+				isValidated = false;
+				$(validationMsg).text(fieldName+' is invalid').show();
+			}
+			else if (name.length<3) {
+				isValidated = false;
+				$(validationMsg).text(fieldName+' is too short').show();
+			}
+			else if (name.length>20) {
+				isValidated = false;
+				$(validationMsg).text(fieldName+' is too long').show();
+			}
+			
+			return isValidated;
+		}
+		
 		
 		$('input').keyup(function() {
 			var inputValueLength = $(this).val().length;
