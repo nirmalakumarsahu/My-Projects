@@ -1,5 +1,9 @@
+/* Third party CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 @import "/css/global/bootstrap.min.css";
 @import "/css/global/sweetalert2.min.css";
+
+/* Own CSS */
 @import "/css/fragments/header.css";
 @import "/css/fragments/footer.css";
 @import "/css/global/loading_mask.css";

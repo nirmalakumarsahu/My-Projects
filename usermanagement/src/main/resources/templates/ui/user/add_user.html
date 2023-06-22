@@ -7,9 +7,6 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>[[${@environment.getProperty('add_user_title')} ? ${@environment.getProperty('add_user_title')} : 'User Management | Add User']]</title>
 	
-	<!-- Third party CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-
 	<!-- Own CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/user/add_user.css}"/>
@@ -166,7 +163,6 @@
 			
 			return isValidated;
 		}
-		
 		
 		$('input').keyup(function() {
 			var inputValueLength = $(this).val().length;
