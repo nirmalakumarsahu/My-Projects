@@ -26,3 +26,22 @@ div.dataTables_wrapper div.dataTables_filter input {
 .data_table_cust>tbody {
     background: white;
 }
+
+li.paginate_button {
+	padding: 1px !important;
+}
+
+.page-item.active .page-link {
+    background-color: #563D7C !important;
+    border-color: #563D7C !important;
+}
+
+.page-link:hover  {
+ 	color: #563D7C !important;
+    border-color: #563D7C !important;
+}
+
+.page-item.active .page-link:hover  {
+ 	color: white !important;
+    border-color: #563D7C !important;
+}

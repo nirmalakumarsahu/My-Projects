@@ -25,13 +25,14 @@ public class SecurityUtil {
 	public static Boolean isGlobalAdmin(CustomUserDetailsDTO loggedInUser) {
 		if (loggedInUser == null) {
 			loggedInUser = getCurrentUser();
-		} else {
-			List<String> loggedInUserPermissions = loggedInUser.getUserPermissions();
+		} 
+		
+		List<String> loggedInUserPermissions = loggedInUser.getUserPermissions();
 
-			if (loggedInUserPermissions.contains(PermissionConstants.GLOBAL_ADMINISTRATION)) {
-				return true;
-			}
+		if (loggedInUserPermissions.contains(PermissionConstants.GLOBAL_ADMINISTRATION)) {
+			return true;
 		}
+		
 		return false;
 	}
 
