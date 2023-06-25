@@ -13,4 +13,6 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 			+ "WHERE ru.user_id=:userId AND r.active IS TRUE", nativeQuery = true)
 	public List<Role> getRolesOfUserByUserId(Long userId);
 	
+	public Role findByName(String name);
+	
 }
