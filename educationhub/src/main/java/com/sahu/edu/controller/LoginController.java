@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sahu.edu.constants.EducationHubConstants;
 import com.sahu.edu.constants.LVNConstants;
@@ -39,26 +40,26 @@ public class LoginController {
 	}
 	
 	@PostMapping("/registration")
-	public String registrationProcess(Map<String, Object> map, @ModelAttribute("user") User user) {
+	public String registrationProcess(RedirectAttributes redirectAttributes, @ModelAttribute("user") User user) {
 		LOGGER.debug("Inside registrationProcess() method");
 		LOGGER.info("User data - " + user.getEmail());
 		if (user.getEmail() != null) {
 			Optional<User> isExist = userService.findByEmail(user.getEmail());
 
 			if (isExist.isPresent()) {
-				map.put(EducationHubConstants.REGISTRATION_ERROR, environment.getProperty("duplicate_user_error_msg"));
-				return LVNConstants.REGISTRATION_PAGE;
+				redirectAttributes.addFlashAttribute(EducationHubConstants.REGISTRATION_ERROR, environment.getProperty("duplicate_user_error_msg"));
+				return LVNConstants.REDIRECT_REGISTRATION_PAGE;
 			} else {
 				Long registeredUserId = userService.registerUser(user);
 				if (registeredUserId != null) {
-					map.put(EducationHubConstants.REGISTRATION_SUCCESS, environment.getProperty("registration_success_msg"));
+					redirectAttributes.addFlashAttribute(EducationHubConstants.REGISTRATION_SUCCESS, environment.getProperty("registration_success_msg"));
 				} else {
-					map.put(EducationHubConstants.REGISTRATION_ERROR, environment.getProperty("registration_failed_msg"));
+					redirectAttributes.addFlashAttribute(EducationHubConstants.REGISTRATION_ERROR, environment.getProperty("registration_failed_msg"));
 				}
 			}
 		}
 
-		return LVNConstants.LOGIN_PAGE;
+		return LVNConstants.REDIRECT_LOGIN_PAGE;
 	}
 
 }
