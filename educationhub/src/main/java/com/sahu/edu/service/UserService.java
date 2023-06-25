@@ -7,4 +7,6 @@ import com.sahu.edu.model.User;
 public interface UserService {
 
 	public Optional<User> findByEmail(String email);
+	
+	public Long registerUser(User user);
 }
