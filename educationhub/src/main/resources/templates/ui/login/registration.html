@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/education-hub.png}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>[[${@environment.getProperty('signup_title')} ? ${@environment.getProperty('signup_title')} : 'Education Hub | Sign Up']]</title>
+
+	 <!-- Third party CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login/registration.css}">
+	
+	<!-- Third party JS -->
+	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	
+	<!-- Own JS -->
+</head>
+<body>
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-auto pt-5" >
+				<div class="col-md-6 pt-5">
+					<img class="register_img" th:src="@{/images/login/registration.png}" alt="registration">
+				</div>
+				<div class="col-md-6 p-5">
+					<div class="card-wrapper pl-5">
+
+						<!-- Registration Failed -->
+						<div th:if="${registrationError} != null" class="alert alert-danger alert-dismissible fade show"
+							role="alert">
+							<strong th:text="${registrationError}"></strong>
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+
+						<div class="card fat">
+							<div class="card-body">
+								<h4 class="card-title text-center">[[${@environment.getProperty('register_heading')} ? ${@environment.getProperty('register_heading')} : 'Register']]</h4>
+								<form method="POST" class="my-login-validation"  th:action="@{/registration}" th:object="${user}">
+	
+										<div class="form-group">
+											<label for="firstName">[[${@environment.getProperty('first_name_label')} ? ${@environment.getProperty('first_name_label')} : 'First Name']]</label> <input
+												id="firstName" type="text"
+												class="form-control" th:name="firstName" required autofocus>
+											<div class="invalid-feedback">What's your First name?</div>
+										</div>
+	
+										<div class="form-group">
+											<label for="lastName">[[${@environment.getProperty('last_name_label')} ? ${@environment.getProperty('last_name_label')} : 'Last Name']]</label> <input id="lastName"
+												type="text" class="form-control"
+												th:name="lastName" required>
+											<div class="invalid-feedback">What's your Last Name?</div>
+										</div>
+	
+										<div class="form-group">
+											<label for="email">[[${@environment.getProperty('email_label')} ? ${@environment.getProperty('email_label')} : 'Email Address']]</label> <input id="email"
+												type="email" class="form-control"
+												th:name="email" required>
+											<div class="invalid-feedback">Your email is invalid</div>
+										</div>
+	
+										<div class="form-group">
+											<label for="password">[[${@environment.getProperty('password_label')} ? ${@environment.getProperty('password_label')} : 'Password']]</label> <input id="password"
+												type="password" class="form-control"
+												th:name="password" required data-eye>
+											<div class="invalid-feedback">Password is required</div>
+										</div>
+	
+										<div class="form-group">
+											<div class="custom-checkbox custom-control">
+												<input type="checkbox" name="agree" id="agree"
+													class="custom-control-input" required/> 
+												<label for="agree" class="custom-control-label">[[${@environment.getProperty('agree_label')} ? ${@environment.getProperty('agree_label')} : 'I agree to the']]</label>
+												<a href="#">[[${@environment.getProperty('terms_condition_link')} ? ${@environment.getProperty('terms_condition_link')} : 'Terms and Conditions']]</a>
+												
+												<div class="invalid-feedback">You must agree with our
+													Terms and Conditions</div>
+											</div>
+										</div>
+	
+										<div class="form-group m-0">
+											<button type="submit" class="btn btn-primary btn-block">
+												[[${@environment.getProperty('register_btn')} ? ${@environment.getProperty('register_btn')} : 'Register']]</button>
+										</div>
+										<div class="mt-4 text-center">
+											<label>[[${@environment.getProperty('already_have_acc_label')} ? ${@environment.getProperty('already_have_acc_label')} : 'Already have an account?']]</label>
+											<a th:href="@{/login}">[[${@environment.getProperty('login_link')} ? ${@environment.getProperty('login_link')} : 'Login']]</a>
+										</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+</body>
+</html>

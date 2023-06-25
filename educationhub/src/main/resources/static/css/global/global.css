@@ -1,0 +1,73 @@
+/* Third party CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+@import "/css/global/bootstrap.min.css";
+@import "/css/global/sweetalert2.min.css";
+
+/* Own CSS */
+@import "/css/fragments/header.css";
+@import "/css/fragments/footer.css";
+@import "/css/global/loading_mask.css";
+
+body{
+	font-family: system-ui;
+}
+
+.main_body_div {
+	height: 573px;
+	background: #ecf9f5;
+}
+
+.required_field_spn {
+	color: red;
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+.field_label {
+	font-weight: bold;
+    font-size: 12px;
+}
+
+.validation_msg_text_color_div {
+    color: red;
+    font-size: 13px;
+    padding-left: 0px;
+    font-weight: 500;
+}
+
+/*form controls customization*/
+.form-control {
+    border-color: #425563 !important;
+    font-weight: 600 !important;
+    font-size: 13px;
+    height: 37px;
+}
+
+.form-control:focus {
+    border-color: #563D7C !important;
+    box-shadow: 0 0 0 0.5px #56289b !important;
+}
+
+/*Button customization*/
+.cust_btn {
+	background: #563D7C;
+	border: 1px solid #563D7C;
+	font-size: 13px;
+    font-weight: 600;
+}
+
+.cust_btn:hover {
+	background: #56289b;
+	border: 1px solid #56289b;
+}
+
+.cust_btn:focus {
+    background: #56289b !important;
+	border: 1px solid #56289b !important;
+    box-shadow: 0 0 0 0.5px #56289b !important;
+}
+
+.cancel_rest_btn {
+	font-size: 13px;
+    font-weight: 600;
+}
