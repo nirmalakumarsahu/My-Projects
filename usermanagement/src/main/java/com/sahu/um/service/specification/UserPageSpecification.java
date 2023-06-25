@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import com.sahu.um.model.User;
 import com.sahu.um.service.UserService;
 import com.sahu.um.service.dto.UserDTO;
-import com.sahu.um.service.util.UserUtil;
+import com.sahu.um.util.service.UserUtil;
 
 @Component
 public class UserPageSpecification {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import com.sahu.um.model.Role;
 import com.sahu.um.service.RoleService;
 import com.sahu.um.service.dto.RoleDTO;
-import com.sahu.um.service.util.RoleUtil;
+import com.sahu.um.util.service.RoleUtil;
 
 @Component
 public class RolePageSpecification {

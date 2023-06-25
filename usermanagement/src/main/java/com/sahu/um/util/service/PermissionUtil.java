@@ -1,4 +1,4 @@
-package com.sahu.um.service.util;
+package com.sahu.um.util.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
