@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>User Management | Home</title>
+	
+	<!-- Third party CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index/index.css}"/>
+	
+	<!-- Third party JS -->
+	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	
+	<!-- Own JS -->
+</head>
+<body>
+	 <!--Header Start-->
+    <div id="header">
+        <div class="container-fluid bg-info text-white">
+            <div class="row">
+                <div class="col-md-6 logo_div">
+                    <img class="logo_img" th:src="@{/images/logo/user-logo.png}" alt="logo">
+                    <h1 class="logo_h1">User Management</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul id="menu" class="float-md-right list-inline m-0 p-0">
+                        <li class="list-inline-item"><a href="">Home</a></li>
+                        <li class="list-inline-item"><a href="">About us</a></li>
+                        <li class="list-inline-item"><a href="">Services</a></li>
+                        <li class="list-inline-item"><a href="">Contact us</a></li>
+                        <li class="list-inline-item m-1">
+                            <a  th:href="@{/login}" class="btn btn-dark">Sign in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header End-->
+    
+    <!-- Banner Start -->
+    <div id="banner">
+    
+    </div>
+    <!-- Banner End -->
+</body>
+</html>
