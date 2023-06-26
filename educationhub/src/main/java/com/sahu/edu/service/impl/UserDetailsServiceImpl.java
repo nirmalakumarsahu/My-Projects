@@ -58,6 +58,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			List<String> userPermissions = permissionList.stream().map(Permission::getName)
 					.collect(Collectors.toList());
 
+			LOGGER.info("User object created");
 			return new CustomUserDetailsDTO(user.get().getEmail(), user.get().getPassword(), authorities,
 					loggedInUserId, userRoles, userPermissions);
 		}

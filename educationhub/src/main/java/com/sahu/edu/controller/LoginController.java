@@ -1,6 +1,5 @@
 package com.sahu.edu.controller;
 
-import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -17,6 +16,8 @@ import com.sahu.edu.constants.EducationHubConstants;
 import com.sahu.edu.constants.LVNConstants;
 import com.sahu.edu.model.User;
 import com.sahu.edu.service.UserService;
+import com.sahu.edu.service.dto.CustomUserDetailsDTO;
+import com.sahu.edu.util.security.SecurityUtil;
 
 @Controller
 public class LoginController {
@@ -28,6 +29,11 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping("/")
+	public String showHomePage() {
+		return LVNConstants.INDEX_PAGE;
+	}
 	
 	@GetMapping("/login")
 	public String showLoginPage() {
@@ -61,5 +67,5 @@ public class LoginController {
 
 		return LVNConstants.REDIRECT_LOGIN_PAGE;
 	}
-
+	
 }
