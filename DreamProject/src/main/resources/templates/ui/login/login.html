@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/logo.png}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>[[${@environment.getProperty('login_title')} ? ${@environment.getProperty('login_title')} : 'Login']]</title>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}">
+	
+	<!-- Third party JS -->
+	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	
+	<!-- Own JS -->
+
+</head>
+
+<body class="bg-gradient-primary">
+	<div class="container">
+
+		<!-- Outer Row -->
+		<div class="row justify-content-center">
+
+			<div class="col-xl-10 col-lg-12 col-md-9">
+
+				<div class="card o-hidden border-0 shadow-lg my-5">
+					<div class="card-body p-0">
+						<!-- Nested Row within Card Body -->
+						<div class="row">
+							<div class="col-lg-6 d-none d-lg-block bg-form-image">
+								<img class="login_img" th:src="@{/images/login/login.png}"
+									alt="login">
+							</div>
+							<div class="col-lg-6">
+								<div class="p-5">
+									<div class="text-center">
+										<h1 class="h4 text-gray-900 mb-4">[[${@environment.getProperty('welcome_back_heading')} ? ${@environment.getProperty('welcome_back_heading')} : 'Welcome Back!']]</h1>
+									</div>
+									<form class="user" method="POST" th:action="@{/login}">
+										<div class="form-group">
+											<input type="email" class="form-control form-control-user"
+												id="exampleInputEmail" th:name="username" aria-describedby="emailHelp"
+												placeholder="Email Address">
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control form-control-user"
+												id="exampleInputPassword" th:name="password" placeholder="Password">
+										</div>
+										<div class="form-group">
+											<div class="custom-control custom-checkbox small">
+												<input type="checkbox" class="custom-control-input"
+													id="customCheck"> <label
+													class="custom-control-label" for="customCheck">[[${@environment.getProperty('remember_me_label')} ? ${@environment.getProperty('remember_me_label')} : 'Remember me']]</label>
+											</div>
+										</div>
+										<button type="submit"
+											class="btn btn-primary btn-user btn-block"> [[${@environment.getProperty('login_btn')} ? ${@environment.getProperty('login_btn')} : 'Login']] </button>
+										<hr>
+										<a href="/oauth2/authorization/google" class="btn btn-google btn-user btn-block">
+											<i class="fa fa-google fa-fw"></i> [[${@environment.getProperty('login_with_google_lable')} ? ${@environment.getProperty('login_with_google_lable')} : 'Login with Google']]
+										</a> 
+										<a href="/oauth2/authorization/facebook"
+											class="btn btn-facebook btn-user btn-block"> <i
+											class="fa fa-facebook-f fa-fw"></i> [[${@environment.getProperty('login_with_facebook_lable')} ? ${@environment.getProperty('login_with_facebook_lable')} : 'Login with Facebook']]
+										</a>
+									</form>
+									<hr>
+									<div class="text-center">
+										<a class="small" th:href="@{/forget-password}">[[${@environment.getProperty('forget_password_link')} ? ${@environment.getProperty('forget_password_link')} : 'Forgot password?']]</a>
+									</div>
+									<div class="text-center">
+										<label class="dont_have_acc small">[[${@environment.getProperty('dont_have_acc_label')} ? ${@environment.getProperty('dont_have_acc_label')} : 'Do not have an account?']]</label> 
+										<a class="small"  th:href="@{/registration}">[[${@environment.getProperty('signup_link')} ? ${@environment.getProperty('signup_link')} : 'SignUp']]</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

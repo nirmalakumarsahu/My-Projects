@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo/user-logo.png}">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>[[${@environment.getProperty('not_found_title')} ? ${@environment.getProperty('not_found_title')} : 'User Management | 404 Not Found']]</title>
+    
+    <!-- Third party CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/error/404.css}"/>
+	
+	<!-- Third party JS -->
+	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	
+	<!-- Own JS -->
+</head>
+
+<body>
+    <section class="page_404">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-10 col-sm-offset-1 text-center div_404">
+                        <div class="four_zero_four_bg">
+                            <h1 class="text-center ">[[${@environment.getProperty('404_heading')} ? ${@environment.getProperty('404_heading')} : '404']]</h1>
+                        </div>
+
+                        <div class="contant_box_404">
+                            <h3 class="h2">[[${@environment.getProperty('lost_heading')} ? ${@environment.getProperty('lost_heading')} : 'Look like you are lost']]</h3>
+
+                            <p>[[${@environment.getProperty('not_available_p')} ? ${@environment.getProperty('not_available_p')} : 'the page you are looking for not available!']]</p>
+
+                            <a th:href="@{/login}" class="link_404">[[${@environment.getProperty('home_link')} ? ${@environment.getProperty('home_link')} : 'Go to Home']]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

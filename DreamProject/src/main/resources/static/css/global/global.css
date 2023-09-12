@@ -1,0 +1,199 @@
+/* Third party CSS - LINK*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+@import "/css/global/bootstrap.min.css";
+@import "/css/global/sweetalert2.min.css";
+
+
+/* Own CSS - LINK*/
+
+
+/*Loading mask - start*/
+#loadingMask {
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loadingMask img {
+    max-width: 50px;
+    max-height: 50px;
+}
+/*Loading mask - end*/
+
+
+/*validation message -start*/
+.required_field_spn {
+	color: red;
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+.validation_msg_text_color_div {
+    color: red;
+    font-size: 13px;
+    padding-left: 0px;
+    font-weight: 500;
+}
+/*validation message - end*/
+
+
+/*form controls focus customization - start*/
+/*#56289b*/
+.form-control:focus {
+    border-color: #9D24A8 !important;
+    box-shadow: 0 0 0 0.5px #9D24A8 !important;
+}
+/*form controls focus customization - end*/
+
+
+/*Button customization - start*/
+.cust_btn {
+	background: #9D24A8;
+	border: 1px solid #9D24A8;
+	font-size: 13px;
+    font-weight: 600;
+}
+
+.cust_btn:hover {
+	background: #9D24A8;
+	border: 1px solid #9D24A8;
+}
+
+.cust_btn:focus {
+    background: #9D24A8 !important;
+	border: 1px solid #9D24A8 !important;
+    box-shadow: 0 0 0 0.5px #9D24A8 !important;
+}
+
+.cancel_rest_btn {
+	font-size: 13px;
+    font-weight: 600;
+}
+/*Button customization - start*/
+
+
+/*background and screens - start*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+	font-family: system-ui;
+	height: 100%;
+}
+
+.main_body_div {
+	background: #ecf9f5;
+}
+
+.bg-gradient-primary {
+  background-color: #4e73df;
+  background-image: linear-gradient(180deg, #1e30f3 0%, #e21e80 100%);
+  background-size: cover;
+}
+
+.bg-form-image {
+  background-position: center;
+  background-size: cover;
+  padding-top: 30px;
+}
+
+.small {
+    font-size: 0.9rem !important;
+}
+
+.form-control-user {
+  font-size: 0.9rem;
+  border-radius: 10rem;
+  padding: 1.5rem 1rem;
+}
+
+.btn-user {
+  font-size: 0.9rem;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  color: #fff;
+  background-color: #ea4335;
+  border-color: #fff;
+}
+
+.btn-google:hover {
+  color: #fff;
+  background-color: #e12717;
+  border-color: #e6e6e6;
+}
+
+.btn-google:focus, .btn-google.focus {
+  color: #fff;
+  background-color: #e12717;
+  border-color: #e6e6e6;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-google.disabled, .btn-google:disabled {
+  color: #fff;
+  background-color: #ea4335;
+  border-color: #fff;
+}
+
+.btn-google:not(:disabled):not(.disabled):active, .btn-google:not(:disabled):not(.disabled).active,
+.show > .btn-google.dropdown-toggle {
+  color: #fff;
+  background-color: #d62516;
+  border-color: #dfdfdf;
+}
+
+.btn-google:not(:disabled):not(.disabled):active:focus, .btn-google:not(:disabled):not(.disabled).active:focus,
+.show > .btn-google.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #fff;
+}
+
+.btn-facebook:hover {
+  color: #fff;
+  background-color: #30497c;
+  border-color: #e6e6e6;
+}
+
+.btn-facebook:focus, .btn-facebook.focus {
+  color: #fff;
+  background-color: #30497c;
+  border-color: #e6e6e6;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-facebook.disabled, .btn-facebook:disabled {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #fff;
+}
+
+.btn-facebook:not(:disabled):not(.disabled):active, .btn-facebook:not(:disabled):not(.disabled).active,
+.show > .btn-facebook.dropdown-toggle {
+  color: #fff;
+  background-color: #2d4373;
+  border-color: #dfdfdf;
+}
+
+.btn-facebook:not(:disabled):not(.disabled):active:focus, .btn-facebook:not(:disabled):not(.disabled).active:focus,
+.show > .btn-facebook.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+/*background and screens - end*/
