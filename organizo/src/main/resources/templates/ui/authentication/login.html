@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" type="image/x-icon" th:href="@{/images/logo/favicon.ico}"/>
+	<title>[[${@environment.getProperty('login_title')} ? ${@environment.getProperty('login_title')} : 'Login']]</title>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/authentication/authentication.css}">
+</head>
+
+<body>
+	<main>
+		<div class="container">
+			<section
+				class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div
+							class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+							<div class="d-flex justify-content-center py-4">
+								<a th:href="@{/}" class="logo d-flex align-items-center w-auto">
+									<img th:src="@{/images/logo/logo.png}" alt=""> <span
+									class="d-none d-lg-block">[[${@environment.getProperty('domain_name')}
+										? ${@environment.getProperty('domain_name')} : 'Organizo']]</span>
+								</a>
+							</div>
+							<!-- End Logo -->
+
+							<div class="card mb-3">
+
+								<div class="card-body">
+
+									<div class="pt-4 pb-2">
+										<h5 class="card-title text-center pb-0 fs-4">[[${@environment.getProperty('welcome_back_heading')}
+											? ${@environment.getProperty('welcome_back_heading')} :
+											'Welcome Back!']]</h5>
+										<p class="text-center small">[[${@environment.getProperty('enter_details_p')}
+											? ${@environment.getProperty('enter_details_p')} : 'Enter
+											your Email & password to Login']]</p>
+									</div>
+									
+									<div th:if="${success} != null" class="alert alert-success alert-dismissible">
+    									<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    									<span th:text="${success} "></span>
+  									</div>
+									
+									<div th:if="${error} != null" class="alert alert-danger alert-dismissible">
+    									<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    									<span th:text="${error} "></span>
+  									</div>
+
+									<div th:if="${param.logout} != null"
+										class="alert alert-success alert-dismissible">
+										<button type="button" class="btn-close"
+											data-bs-dismiss="alert"></button>
+										<span>[[${@environment.getProperty('logout_success_msg')}
+											? ${@environment.getProperty('logout_success_msg')} : 'You
+											have successfully logged out.']]</span>
+									</div>
+
+									<div th:if="${param.error} != null" class="alert alert-danger alert-dismissible">
+  										<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    									<span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message} "></span>
+  									</div>
+							
+									<form method="POST" th:action="@{/login}" class="row g-3 needs-validation" novalidate>
+
+										<div class="col-12">
+											<label for="yourEmail" class="form-label">[[${@environment.getProperty('email_label')}
+												? ${@environment.getProperty('email_label')} : 'Email']]</label>
+											<div class="input-group has-validation">
+												<input type="email" th:name="username" class="form-control"
+													id="yourUsername" required>
+												<div class="invalid-feedback">[[${@environment.getProperty('valid_email_required_msg')}
+													? ${@environment.getProperty('valid_email_required_msg')} :
+													'Please enter a valid Email address!']]</div>
+											</div>
+										</div>
+
+										<div class="col-12">
+											<label for="yourPassword" class="form-label">[[${@environment.getProperty('password_label')}
+												? ${@environment.getProperty('password_label')} :
+												'Password']]</label> <input type="password" th:name="password"
+												class="form-control" id="yourPassword" required>
+											<div class="invalid-feedback">[[${@environment.getProperty('password_required_msg')}
+												? ${@environment.getProperty('password_required_msg')} :
+												'Please enter your password!']]</div>
+										</div>
+
+										<div class="col-12">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox"
+													name="remember" value="true" id="rememberMe"> <label
+													class="form-check-label small" for="rememberMe">
+													[[${@environment.getProperty('remember_me_label')} ?
+													${@environment.getProperty('remember_me_label')} :
+													'Remember me']] </label>
+											</div>
+										</div>
+										<div class="col-12">
+											<button class="btn btn-primary w-100" type="submit">
+												[[${@environment.getProperty('login_btn')} ?
+												${@environment.getProperty('login_btn')} : 'Login']]</button>
+										</div>
+										<div class="col-12 text-center">
+											<a class="small mb-0" th:href="@{/forget-password}">[[${@environment.getProperty('forget_password_link')}
+											? ${@environment.getProperty('forget_password_link')} :
+											'Forgot password?']]</a>
+										</div>
+										<div class="col-12 text-center">
+											<p class="small mb-0">
+												[[${@environment.getProperty('dont_have_acc_label')} ?
+												${@environment.getProperty('dont_have_acc_label')} : 'Do not
+												have an account?']] <a th:href="@{/registration}">
+													[[${@environment.getProperty('create_acc_link')} ?
+													${@environment.getProperty('create_acc_link')} : 'Create an
+													account']] </a>
+											</p>
+										</div>
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<!-- Third party JS -->
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" th:src="@{/vendors/tinymce/tinymce.min.js}"></script>
+	
+	<!-- Own JS -->
+	<script type="text/javascript" th:src="@{/js/global/tinymce-enable.js}"></script>
+</body>
+
+</html>

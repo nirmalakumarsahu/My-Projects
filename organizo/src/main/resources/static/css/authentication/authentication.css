@@ -1,0 +1,44 @@
+a {
+    color: #4154f1;
+    text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+    .logo {
+        width: 280px;
+    }
+}
+.logo {
+    line-height: 1;
+}
+
+.logo img {
+    max-height: 50px;
+    margin-right: 6px;
+}
+
+.logo span {
+    font-size: 26px;
+    font-weight: 700;
+    color: #012970;
+    font-family: "Nunito", sans-serif;
+}
+
+.card {
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-body {
+    padding: 0 20px 20px 20px;
+}
+
+.card-title {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #012970;
+    font-family: "Poppins", sans-serif;
+}

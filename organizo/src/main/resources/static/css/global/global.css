@@ -1,0 +1,40 @@
+/* Third party CSS - LINK*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import "/css/global/bootstrap.min.css";
+@import "/vendors/bootstrap-icons/bootstrap-icons.css";
+@import "/css/global/sweetalert2.min.css";
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #f6f9ff;
+    color: #444444;
+}
+
+.btn {
+	background: #4154f1;
+	border-color: #4154f1;
+}
+
+.btn:hover {
+	background: #5969f3;
+	border-color: #5969f3;
+}
+
+a {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #717ff5;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito", sans-serif;
+}

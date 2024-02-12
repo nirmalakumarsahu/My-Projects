@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "a96e567a-9bc7-4c43-a1ed-bb44d57687bd",
+		"name": "Nimesa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11584343"
+	},
+	"item": [
+		{
+			"name": "DiscoverServices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/discover-services?services=EC2,S3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"discover-services"
+					],
+					"query": [
+						{
+							"key": "services",
+							"value": "EC2,S3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJobResult",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-job-result?jobId=1001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-job-result"
+					],
+					"query": [
+						{
+							"key": "jobId",
+							"value": "1001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDiscoveryResult",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-discovery-result?service=S3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-discovery-result"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "S3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetS3BucketObjects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-s3-bucket-objects?bucketName=nimesaassignmentbucket1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-s3-bucket-objects"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "nimesaassignmentbucket1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetS3BucketObjectsDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-s3-bucket-objects-details?bucketName=nimesaassignmentbucket1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-s3-bucket-objects-details"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "nimesaassignmentbucket1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetS3BucketObjectCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-s3-bucket-object-count?bucketName=nimesaassignmentbucket1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-s3-bucket-object-count"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "nimesaassignmentbucket1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetS3BucketObjectlike",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7878/api/v1/aws/get-s3-bucket-object-like?bucketName=nimesaassignmentbucket1&pattern=New folder/Test-File",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7878",
+					"path": [
+						"api",
+						"v1",
+						"aws",
+						"get-s3-bucket-object-like"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "nimesaassignmentbucket1"
+						},
+						{
+							"key": "pattern",
+							"value": "New folder/Test-File"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
