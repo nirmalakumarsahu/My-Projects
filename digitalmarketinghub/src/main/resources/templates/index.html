@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="icon" type="image/x-icon" th:href="@{/images/logo/favicon.ico}"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>[[${@environment.getProperty('domain_name')} ? ${@environment.getProperty('domain_name')} : 'Digital Marketing Hub']]</title>
+
+	<!-- Own CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/global.css}">
+	
+	<!-- Third party JS -->
+	<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min-5.3.1.js}"></script>
+	
+</head>
+
+<body>
+	<!-- Header -->
+	<header id="header" class="fixed-top d-flex align-items-cente">
+		<div
+			class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+			<!-- LOGO -->
+			<a href="#" class="logo me-auto me-lg-0"><img
+				th:src="@{/images/logo/logo.png}" alt="" class="img-fluid"></a>
+
+			<nav id="navbar" class="navbar order-last order-lg-0">
+				<ul>
+					<li><a class="nav-link scrollto active" href="#hero">[[${@environment.getProperty('nav_home')}
+							? ${@environment.getProperty('nav_home')} : 'Home']]</a></li>
+					<li><a class="nav-link scrollto" href="#about">[[${@environment.getProperty('nav_about_us')}
+							? ${@environment.getProperty('nav_about_us')} : 'About Us']]</a></li>
+					<li><a class="nav-link scrollto" href="#menu">[[${@environment.getProperty('nav_menu_templates')}
+							? ${@environment.getProperty('nav_menu_templates')} : 'Menu
+							Templates']]</a></li>
+					<li><a class="nav-link scrollto" href="#services">[[${@environment.getProperty('nav_services')}
+							? ${@environment.getProperty('nav_services')} : 'Services']]</a></li>
+					<!-- <li><a class="nav-link scrollto" href="#founders">[[${@environment.getProperty('nav_founders')}
+							? ${@environment.getProperty('nav_founders')} : 'Founders']]</a></li> -->
+					<li><a class="nav-link scrollto" href="#contact">[[${@environment.getProperty('nav_contact')}
+							? ${@environment.getProperty('nav_contact')} : 'Contact']]</a></li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav>
+
+			<a th:href="@{/login}" class="login-btn scrollto d-none d-lg-flex">[[${@environment.getProperty('login_btn')}
+				? ${@environment.getProperty('login_btn')} : 'Login']]</a>
+		</div>
+	</header>
+	<!-- End Header -->
+
+</body>
+</html>
